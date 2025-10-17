@@ -1,0 +1,158 @@
+<!-- === Footer === -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Logo und Slogan -->
+    <div class="footer-logo">
+      <div class="footer-symbols">
+        <span class="cyber-blue">{</span>
+        <span class="text-white" style="margin: 0 4px;">C</span>
+        <span class="cyber-blue cursor-blink">}</span>
+      </div>
+      <p class="footer-slogan">„Innovation beginnt mit einer Idee – ich mache sie digital.“</p>
+    </div>
+
+    <!-- Kontakt -->
+    <div class="footer-contact">
+      <h4>Cirpan Software Development</h4>
+      <p>Steinfeldgasse 16/20<br>
+         2340 Mödling, Niederösterreich</p>
+      <p>📞 0650 680 3019<br>
+         📧 <a href="mailto:info@cirpan.at">info@cirpan.at</a></p>
+    </div>
+
+    <!-- Rechtliches -->
+    <div class="footer-links">
+      <h4>Rechtliches</h4>
+      <div class="footer-buttons">
+        <button onclick="window.location.href='impressum.html'">Impressum</button>
+        <button onclick="window.location.href='datenschutz.html'">Datenschutz</button>
+        <button onclick="window.location.href='cookies.html'">Cookies</button>
+        <button onclick="window.location.href='agb.html'">AGB</button>
+      </div>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-social">
+      <h4>Folge mir</h4>
+      <div class="social-icons">
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="footer-bottom">
+    © 2026 Cirpan Software Development · Alle Rechte vorbehalten.
+  </div>
+</footer>
+
+<style>
+  /* === Footer Styles === */
+  .footer {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 50px 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 30px;
+  }
+
+  .footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-symbols span {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .footer-slogan {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: #ccc;
+    max-width: 250px;
+    line-height: 1.4;
+  }
+
+  .footer-contact h4,
+  .footer-links h4,
+  .footer-social h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #FDC03B;
+    margin-bottom: 8px;
+  }
+
+  .footer-contact p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #ddd;
+  }
+
+  .footer-contact a {
+    color: #FDC03B;
+    text-decoration: none;
+  }
+
+  .footer-buttons button {
+    background-color: transparent;
+    border: 1px solid #FDC03B;
+    color: #FDC03B;
+    padding: 6px 12px;
+    margin: 4px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .footer-buttons button:hover {
+    background-color: #FDC03B;
+    color: #121212;
+  }
+
+  .social-icons a {
+    color: #FDC03B;
+    margin: 0 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .social-icons a:hover {
+    color: #fff;
+  }
+
+  .footer-bottom {
+    font-size: 0.8rem;
+    color: #aaa;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 15px;
+    width: 100%;
+    text-align: center;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  .cursor-blink {
+    animation: blink 1s step-start infinite;
+  }
+</style>
