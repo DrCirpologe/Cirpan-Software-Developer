@@ -43,25 +43,513 @@
     </div>
   </header>
 
+  <style>
+    /* === Grundlayout === */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: #121212;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+  
+    body::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 1;
+      z-index: -1;
+    }
+
+    body::before {
+      background: linear-gradient(45deg, #FFD439, transparent);
+      bottom: -100px;
+      left: -100px;
+      width: 480px;
+      height: 480px;
+    }
+
+    body::after {
+      background: linear-gradient(225deg, #FFD439, transparent);
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+    }
+
+    /* === Navigation === */
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 50px;
+      box-sizing: border-box;
+      z-index: 20;
+      background: transparent;
+    }
+
+    /* === Logo === */
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .cyber-blue {
+      color: #00ffff;
+    }
+
+    .cursor-blink {
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .logo-symbols {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 6px;
+      position: relative;
+      top: -5px;
+    }
+
+    .logo-symbols span {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .logo-text .main {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.05em;
+      margin-bottom: 2px;
+    }
+
+    .logo-text .sub {
+      font-size: 0.6rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      text-align: left;
+      margin-left: 0.25rem;
+      position: relative;
+      left: -5px;
+      top: 5px;
+    }
+
+    /* === Navigation rechts === */
+    .nav-links-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-link {
+      margin: 0 18px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: color 0.3s;
+    }
+
+    .nav-link:first-of-type {
+      color: #FDC03B;
+    }
+
+    .nav-link:hover {
+      color: #FDC03B;
+    }
+
+    /* === 🔥 Leuchtender Reach Out Button === */
+    .reach-out-button {
+      margin-left: 30px;
+      background-color: #FDC03B;
+      color: black;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      position: relative;
+      animation: glow 1.8s infinite alternate;
+      box-shadow: 0 0 15px rgba(253, 192, 59, 0.6);
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .reach-out-button:hover {
+      background-color: #FFD700;
+      box-shadow: 0 0 25px rgba(253, 192, 59, 0.8);
+    }
+
+    @keyframes glow {
+      0% {
+        box-shadow: 0 0 10px rgba(253, 192, 59, 0.4),
+                    0 0 20px rgba(253, 192, 59, 0.3),
+                    0 0 30px rgba(253, 192, 59, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(253, 192, 59, 0.8),
+                    0 0 30px rgba(253, 192, 59, 0.6),
+                    0 0 40px rgba(253, 192, 59, 0.4);
+      }
+      100% {
+        box-shadow: 0 0 10px rgba(253, 192, 59, 0.4),
+                    0 0 20px rgba(253, 192, 59, 0.3),
+                    0 0 30px rgba(253, 192, 59, 0.2);
+      }
+    }
+
+    .click-me-arrow {
+      position: absolute;
+      top: calc(-45px + 125px);
+      right: calc(0px + 40px);
+      color: #FDC03B;
+      font-size: 1rem;
+      font-weight: 600;
+      white-space: nowrap;
+      pointer-events: none;
+      transform: rotate(-20deg);
+    }
+
+    .click-me-arrow::before {
+      content: '↑';
+      display: block;
+      font-size: 2rem;
+      line-height: 0.8;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    /* === Scrollbarer Bereich === */
+    .scroll-area {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      overflow-y: auto;
+      
+      z-index: 5;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 200px, black calc(100% - 100px), transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 70px, black 200px, black calc(100% - 100px), transparent 100%);
+    }
+
+    .section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      scroll-snap-align: start;
+      padding: 20px;
+    }
+
+    .headline {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #FDC03B;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 5px;
+    }
+
+    .tagline {
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 0.15em;
+      max-width: 600px;
+    }
+
+    /* === Kontaktbutton mit Glow === */
+    .contact-btn {
+      margin-top: 20px;
+      background-color: #FDC03B;
+      color: black;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      animation: glow 1.8s infinite alternate;
+      box-shadow: 0 0 15px rgba(253, 192, 59, 0.6);
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .contact-btn:hover {
+      background-color: #FFD700;
+      box-shadow: 0 0 25px rgba(253, 192, 59, 0.8);
+    }
+
+    /* === Bild links unten === */
+    .portrait {
+      position: absolute;
+      bottom: -40px;
+      left: 20px;
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      z-index: 4;
+    }
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;   /* rechtsbündig horizontal für Inhalte */
+  justify-content: center; /* vertikal zentriert */
+  text-align: left;       /* Text linksbündig */
+  max-width: 700px;
+  padding: 0 50px;         /* Abstand vom rechten Rand */
+  height: 100vh;           /* gleiche Höhe wie Section 1 & 3 */
+  margin-left: auto;        /* schiebt die Box nach rechts */
+}
+
+/* Überschrift linksbündig */
+.about-container h2 {
+  align-self: flex-start;  /* Überschrift links anordnen */
+  text-align: left;        /* Text linksbündig */
+  margin-bottom: 15px;
+}
+
+
+    .about-container h2 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: #FDC03B;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .about-container p {
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .skills {
+      margin-top: 25px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #FDC03B;
+      letter-spacing: 0.05em;
+    }
+
+    
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <a href="#" class="logo">
+      <div class="logo-symbols">
+        <span class="cyber-blue">{</span>
+        <span class="text-white" style="margin: 0 6px;">C</span>
+        <span class="cyber-blue cursor-blink">}</span>
+      </div>
+      <div class="logo-text">
+        <span class="main">IRPAN</span>
+        <span class="sub">Software Development</span>
+      </div>
+    </a>
+
+    <div class="nav-links-container">
+      <a href="index.html" class="nav-link">HOME</a>
+      <a href="index.html#about" class="nav-link">ABOUT</a>
+      <a href="project.html" class="nav-link">PROJECT</a>
+
+      <button class="reach-out-button" onclick="window.location.href='reachOut.html'">
+        REACH OUT
+        <span class="click-me-arrow">click me</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Scrollbarer Bereich -->
+  <div class="scroll-area">
+
+      <!-- Gelbe Blur-Flecken in scroll-area -->
+  <div class="blur-circle before"></div>
+  <div class="blur-circle after"></div>
+
+
+  
+
+    <!-- Section 1 -->
+    <section class="section text-center">
+
+     <!-- Kontaktformular -->
+<div class="contact-form-container">
+  <h3>Schreib mir eine Nachricht</h3>
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="Dein Name" required>
+    <input type="email" name="email" placeholder="Deine E-Mail" required>
+    <textarea name="message" placeholder="Deine Nachricht" rows="6" required></textarea>
+    <button type="submit">Senden</button>
+    <p id="formMessage"></p>
+  </form>
+</div>
+
+<script>
+  (function(){
+    emailjs.init("deine_userID"); // <-- Hier deine EmailJS User ID eintragen
+  })();
+
+  const contactForm = document.getElementById('contactForm');
+  const formMessage = document.getElementById('formMessage');
+
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // Standard-Submit verhindern
+
+    emailjs.sendForm('service_y2qfp0k', 'template_d1q49pp', this)
+      .then(() => {
+        formMessage.textContent = "Nachricht erfolgreich gesendet!";
+        contactForm.reset();
+      })
+      .catch((error) => {
+        console.error('EmailJS Fehler:', error);
+        formMessage.textContent = "Fehler beim Senden. Bitte später versuchen.";
+      });
+  });
+</script>
+
+
+ </section>
+
+ <section  class="section">
   <!-- Kontakttext -->
   <div class="contact-text-container">
     <h2>Kontaktiere mich</h2>
-    <p>📞 Tel: 0650 680 3019</p>
-    <p>📧 E-Mail: ocirpan920@gmail.com</p>
 
+    <!-- Telefonnummer Button -->
+    <a href="tel:06506803019" class="phone-button">📞 **** *** ****</a>
+
+    <!-- Unsichtbare E-Mail für Funktion -->
+    <a href="mailto:ocirpan920@gmail.com" id="emailLink" style="display:none;">E-Mail senden</a>
+
+    <!-- Social Buttons -->
     <div class="social-buttons">
       <button id="linkedinBtn">LinkedIn</button>
       <button id="githubBtn">GitHub</button>
     </div>
   </div>
 
-  <!-- Bild unten links -->
-  <div class="portrait-wrapper">
-    <div class="blur-circle before"></div>
-    <img src="image/ich.png" alt="Ich" class="portrait">
-  </div>
+    </section>
 
-  <!-- Externes JS -->
-  <script src="js/contact.js"></script>
+
+  <!-- Bild -->
+  <img src="image/ich.png" alt="Ich" class="portrait" />
+
+<!-- Footer (außerhalb von scroll-area) -->
+<footer id="footer-placeholder" style="width: 100%;"></footer>
+
+<style>
+
+    .scroll-area {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  /* Blur-Flecken jetzt relativ zur scroll-area */
+  .blur-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+  }
+
+  .blur-circle.before {
+    width: 480px;
+    height: 480px;
+    bottom: -100px;
+    left: -100px;
+    background: linear-gradient(45deg, #FFD439, transparent);
+  }
+
+
+  
+  /* Footer-Styling */
+  footer {
+    background-color: #121212; /* gleiche Farbe wie Body */
+    color: white;
+    width: 100%;
+    height: 260px;
+    display: flex;
+    align-items: center; /* gleiche Höhe horizontal */
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+  }
+
+  footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+  }
+
+  footer a:hover {
+    color: #FDC03B;
+  }
+</style>
+
+<!-- Footer laden -->
+<script>
+  fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-placeholder').innerHTML = data;
+    })
+    .catch(err => console.error('Fehler beim Laden des Footers:', err));
+</script>
+
+  
 </body>
 </html>

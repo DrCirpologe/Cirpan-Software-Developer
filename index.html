@@ -494,14 +494,9 @@
 </style>
 
 <!-- Footer laden -->
-<script>
-  fetch('footer.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('footer-placeholder').innerHTML = data;
-    })
-    .catch(err => console.error('Fehler beim Laden des Footers:', err));
-</script>
+<!-- Load DOMPurify then centralized footer loader (js/index.js) -->
+<script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
+<script src="js/index.js"></script>
 
   
 </body>
