@@ -290,3 +290,26 @@
   background: linear-gradient(45deg, #FFD439, transparent);
   z-index: -1;
 }
+
+/* Responsive overrides for project page */
+@media (max-width: 1024px) {
+  .projects-container { max-width: 720px; padding: 0 24px; position: static; transform: none; }
+  .project-cards { gap: 18px; }
+  .project-card { width: 220px; }
+  .portrait-wrapper { left: 12px; bottom: -10px; }
+}
+@media (max-width: 600px) {
+  .navbar { padding: 14px 16px; }
+  .nav-links-container { display: none; }
+  .projects-container { padding: 16px; transform: none; left: 0; }
+  .project-cards { flex-direction: column; align-items: center; }
+  .project-card { width: calc(100% - 40px); max-width: 420px; }
+  .portrait-wrapper, .portrait { position: relative; width: 140px; margin: 18px auto; left: 0; bottom: 0; }
+}
+
+/* strong mobile overrides */
+@media (max-width: 600px) {
+  .projects-container, .project-cards, .project-card { position: static !important; transform: none !important; left: auto !important; }
+  .portrait { position: relative !important; width: 140px !important; left: 0 !important; bottom: 0 !important; margin: 12px auto !important; }
+  .nav-links-container { display: none !important; }
+}

@@ -256,6 +256,34 @@ body::after {
   font-weight: 600;
 }
 
+/* Responsive overrides */
+@media (max-width: 1024px) {
+  .navbar { padding: 18px 28px; }
+  .nav-links-container { gap: 12px; }
+  .contact-text-container { left: 60%; top: 50%; transform: translate(-50%, -50%); max-width: 520px; }
+  .contact-form-container { right: 180px; bottom: -220px; max-width: 520px; }
+  .portrait { width: 220px; }
+}
+
+@media (max-width: 600px) {
+  .nav-links-container { display: none; }
+  .navbar { padding: 12px 14px; }
+  .contact-text-container { position: static; transform: none; top: auto; left: auto; margin: 18px; align-items: flex-start; }
+  .contact-form-container { position: static; right: auto; bottom: auto; margin: 18px; max-width: 100%; align-items: stretch; }
+  #contactForm { width: 100%; }
+  .portrait, .portrait-wrapper { position: relative; width: 140px; margin: 12px auto; left: 0; bottom: 0; }
+  .phone-button { padding: 12px 18px; font-size: 1rem; }
+  .social-buttons { justify-content: center; }
+  .scroll-area { -webkit-mask-image: none; mask-image: none; }
+}
+
+/* Strong mobile overrides */
+@media (max-width: 600px) {
+  .contact-text-container, .contact-form-container { position: static !important; right: auto !important; left: auto !important; bottom: auto !important; transform: none !important; max-width: 100% !important; margin: 12px !important; }
+  .portrait, .portrait-wrapper { position: relative !important; width: 140px !important; margin: 12px auto !important; }
+  .nav-links-container { display: none !important; }
+}
+
 
 .contact-form-container {
   position: absolute;      /* absolute Positionierung möglich */
