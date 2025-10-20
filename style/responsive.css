@@ -157,7 +157,7 @@ button, input, textarea { font-size: 1rem; box-sizing: border-box; }
   footer { overflow: visible !important; }
 
   /* lift inner content upward by 10% so buttons/text/logo appear higher in the footer area */
-  footer > * { transform: translateY(-10%) ; }
+  footer > * { transform: translateY(-0%) ; }
   footer .footer-container { transform: translateY(-0%); }
   /* Make the very bottom copyright line smaller and lift it slightly so it's visible and readable */
   footer .footer-bottom {
