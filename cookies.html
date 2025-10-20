@@ -3,22 +3,73 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cookies – CIRPAN Software</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Cookie‑Richtlinie – CIRPAN Software Development</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style/base.css">
   <link rel="stylesheet" href="style/responsive.css">
   <style>
-    .legal-content { width: 100%; max-width: 860px; margin: 0 auto; text-align: left; padding: 8px 22px; }
+    body { margin:0; background:#0b0b0b; color:#fff; font-family:'Inter',sans-serif; }
+    .container { max-width:980px; margin:48px auto; padding:28px; }
+    .legal-content { background:rgba(255,255,255,0.02); padding:24px; border-radius:8px; color:#e6e6e6 }
+    .legal-content h4{ color:#FDC03B }
+    .consent-summary{ margin-top:18px; padding:12px; background:#0f0f0f; border-radius:6px; }
+    .consent-actions{ margin-top:18px; display:flex; gap:8px; }
+    button.primary{ background:#FDC03B; color:#000; padding:10px 14px; border-radius:6px; border:0; cursor:pointer }
+    button.ghost{ background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.08); padding:8px 12px; border-radius:6px; }
+    a { color: #FDC03B }
   </style>
 </head>
-<body class="cookies">
-  <header class="navbar"><a href="index.html" class="logo"><div class="logo-symbols"><span class="cyber-blue">{</span><span class="text-white" style="margin:0 6px">C</span><span class="cyber-blue cursor-blink">}</span></div><div class="logo-text"><span class="main">IRPAN</span><span class="sub">Software Development</span></div></a>
-  <div class="nav-links-container"><a href="index.html" class="nav-link">STARTSEITE</a><a href="index.html#about" class="nav-link">ÜBER MICH</a><a href="project.html" class="nav-link">PROJEKTE</a><button class="reach-out-button" onclick="window.location.href='reachOut.html'">KONTAKT</button></div></header>
-  <div class="scroll-area"><section class="section"><h3 class="headline">Cookies</h3><div class="legal-content"></div></section></div>
-  <footer id="footer-placeholder" style="width:100%;"></footer>
-  <script>fetch('footer.html').then(r=>r.text()).then(html=>document.getElementById('footer-placeholder').innerHTML=html).catch(err=>console.error('Fehler beim Laden des Footers:',err));</script>
+<body>
+  <header class="navbar">
+    <a href="index.html" class="logo">CIRPAN</a>
+  </header>
+
+  <main class="container">
+    <h1 class="headline">Cookie‑Richtlinie</h1>
+    <p class="tagline">Informationen zu eingesetzten Cookies, Zwecken, Speicherdauer und wie Sie Einwilligungen verwalten können.</p>
+
+    <article class="legal-content">
+      <h4>1. Einführung</h4>
+      <p>Diese Website verwendet Cookies und ähnliche Technologien, um die Funktionalität bereitzustellen, die Website zu analysieren und Medieninhalte einzubetten. In dieser Richtlinie erläutern wir, welche Cookies gesetzt werden und auf welcher Rechtsgrundlage dies erfolgt.</p>
+
+      <h4>2. Kategorien von Cookies</h4>
+      <ul>
+        <li><strong>Notwendige Cookies</strong> – technisch erforderliche Cookies, die den Grundbetrieb der Website sicherstellen.</li>
+        <li><strong>Analyse‑/Statistik‑Cookies</strong> – dienen der anonymisierten Auswertung der Nutzung zur Verbesserung des Angebots (z. B. Google Analytics).</li>
+        <li><strong>Medien/Einbettungen</strong> – ermöglichen das Einbinden externer Medien (z. B. YouTube). Diese erfordern in der Regel eine aktive Einwilligung.</li>
+      </ul>
+
+      <h4>3. Zweck & Rechtsgrundlage</h4>
+      <p>Notwendige Cookies sind für den Betrieb der Website erforderlich. Analyse‑ und Medien‑Cookies werden nur mit Ihrer Einwilligung gesetzt (Art. 6 Abs. 1 lit. a DSGVO).</p>
+
+      <h4>4. Speicherdauer</h4>
+      <p>Cookies werden je nach Zweck unterschiedlich lange gespeichert. Sitzungscookies enden mit dem Schließen des Browsers; persistente Cookies können mehrere Monate oder Jahre gültig sein.</p>
+
+      <h4>5. Ihre Rechte</h4>
+      <p>Sie können Ihre Einwilligung jederzeit widerrufen oder anpassen. Klicken Sie auf "Cookie‑Einstellungen öffnen", um die granularen Optionen anzuzeigen.</p>
+
+      <div class="consent-summary">
+        <div class="consent-actions">
+          <button id="cc-open" class="primary">Cookie‑Einstellungen öffnen</button>
+          <button id="cc-reset" class="ghost">Alle ablehnen</button>
+        </div>
+      </div>
+
+      <h4>6. Drittanbieter</h4>
+      <p>Beim Einbinden von Diensten Dritter (z. B. Google, YouTube) können zusätzliche Cookies durch die jeweiligen Anbieter gesetzt werden. Wir haben auf diese Dienste keinen direkten Einfluss.</p>
+
+      <h4>7. Kontakt</h4>
+      <p>Bei Fragen zum Datenschutz kontaktieren Sie uns unter <a href="mailto:info.cirpan@gmail.com">info.cirpan@gmail.com</a>.</p>
+    </article>
+  </main>
+
+  <footer id="footer-placeholder"></footer>
+
+  <script src="js/cookie-consent.js"></script>
+  <script>
+    document.getElementById('cc-open')?.addEventListener('click', ()=>{ window.CIRPAN?.cookieConsent?.show(); });
+    document.getElementById('cc-reset')?.addEventListener('click', ()=>{ window.CIRPAN?.cookieConsent?.set({ necessary:true, analytics:false, media:false }); alert('Einstellungen gespeichert'); });
+    fetch('footer.html').then(r=>r.text()).then(t=>document.getElementById('footer-placeholder').innerHTML = t);
+  </script>
   <script src="js/mobile-nav.js"></script>
-  <script src="js/index.js"></script>
 </body>
 </html>
