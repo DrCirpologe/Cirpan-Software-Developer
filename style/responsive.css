@@ -80,17 +80,18 @@ button, input, textarea { font-size: 1rem; box-sizing: border-box; }
   }
   .mobile-nav-overlay.open { opacity: 1 !important; pointer-events: auto !important; }
 
-  /* inner panel slides in from the right */
+  /* inner panel slides in from the right. Make the panel itself control horizontal size
+     and the overlay act purely as a backdrop so the sheet can be as wide as desired. */
   .mobile-nav-overlay .mobile-inner {
     position: absolute !important;
     top: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
-    right: 0 !important;
     left: auto !important;
-  height: 100vh !important;
-  width: 45vw !important; /* panel width set to 50vw as requested */
-    max-width: none !important;
+    height: 100vh !important;
+    /* Default: large on phones — allow up to 90vw so it feels substantial horizontally */
+    width: 45vw !important;
+    max-width: none !important; /* remove earlier max-width constraints */
     transform: translateX(100%) !important; /* start off-screen to the right */
     transition: transform 360ms cubic-bezier(.2,.9,.3,1) !important;
     /* subtle gradient: dark on the left edge, gentle yellow toward the right */
@@ -101,7 +102,12 @@ button, input, textarea { font-size: 1rem; box-sizing: border-box; }
     border-bottom-left-radius: 6px !important;
     z-index: 4000 !important;
   }
-  .mobile-nav-overlay.open { transform: translateX(0) !important; }
+  /* open state: slide the inner panel into view */
+  .mobile-nav-overlay.open .mobile-inner { transform: translateX(0) !important; }
+
+  /* Optional modifier: make the inner panel extra-wide (full viewport width) when desired.
+     You can toggle this class from JS to create an extra 'push' sheet effect. */
+  .mobile-nav-overlay .mobile-inner.wide { width: 100vw !important; }
 
   /* Links and controls inside the sheet: keep readable on both dark and light areas */
   .mobile-nav-overlay .mobile-links { display:flex; flex-direction:column; gap:14px; margin-top:8px; }
