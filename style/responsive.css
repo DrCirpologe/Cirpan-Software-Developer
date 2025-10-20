@@ -46,7 +46,13 @@ button, input, textarea { font-size: 1rem; box-sizing: border-box; }
      - make content vertically ~30% larger (increase section height)
      - portrait: on home show at half of desktop width */
   html, body { transform: translateY(0); }
-  /* Apply visual shift to the main scroll area using padding so fixed navbar and shifting play nice */
+  /* Apply visual shift to the main scroll area using padding so fixed navbar and shifting play nice
+    Provide per-page adjustments so each page can have its own top offset on small screens. */
+  body.home .scroll-area { padding-top: calc(40px + 16vh); }
+  body.project .scroll-area { padding-top: calc(20px + 15vh); }
+  body.about .scroll-area { padding-top: calc(200px + 15vh); }
+  body.reachout .scroll-area { padding-top: calc(-100px + 14vh); }
+  /* Fallback for any other pages */
   .scroll-area { padding-top: calc(70px + 15vh); }
   /* Make sections slightly taller on mobile (~10% larger as requested) for home/about/project */
   body.home .section,
@@ -59,7 +65,25 @@ button, input, textarea { font-size: 1rem; box-sizing: border-box; }
   /* Portrait behavior on mobile */
   .portrait{ display:none !important; position:static; margin:0; box-shadow:none; transform:none; }
   /* On home only: show portrait at ~50% of its desktop width */
-  body.home .portrait { display:block !important; position:static !important; width:50% !important; max-width:210px; margin:18px auto 6px auto !important; border-radius:12px !important; box-shadow:0 14px 36px rgba(0,0,0,0.55) !important; }
+  body.home .portrait { display:block !important; position:static !important; width:50% !important; max-width:210px; margin:28px auto 18px auto !important; border-radius:12px !important; box-shadow:0 14px 36px rgba(0,0,0,0.55) !important; }
+
+  /* Prevent the bottom text from sitting too high on the home page: add extra
+    spacing after sections and push footer content down slightly on mobile. */
+  body.home .section { padding-bottom: 30px !important; }
+  body.home footer { padding-top: 40px !important; }
+  /* Push the content directly following the portrait image down by 40px on mobile
+    so the second text block doesn't sit too close or overlap. */
+  body.home .portrait + * { margin-top: 40px !important; }
+  /* Add consistent vertical rhythm between text blocks on the home page for mobile */
+  body.home .section > * { margin-top: 40px !important; }
+  body.home .section > *:first-child { margin-top: 0 !important; }
+  /* Specific vertical rhythm required by design on Home (mobile):
+    - 40px after the tagline ("FÜR DEIN UNTERNEHMEN!")
+    - 40px gap below the portrait image
+    - 40px gap after the skills before the "Let's Work Together" section */
+  body.home .tagline { margin-bottom: 40px !important; }
+  body.home .portrait { margin: 28px auto 40px auto !important; }
+  body.home .skills { margin-bottom: 40px !important; }
 
   /* Hamburger on small phones: three horizontal bars */
   .hamburger { display: inline-flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; width:44px !important; height:44px !important; background: transparent !important; border: 0 !important; cursor: pointer !important; padding: 0 !important; gap: 4px !important; }
@@ -90,7 +114,7 @@ button, input, textarea { font-size: 1rem; box-sizing: border-box; }
     left: auto !important;
     height: 100vh !important;
     /* Default: large on phones — allow up to 90vw so it feels substantial horizontally */
-    width: 35vw !important;
+    width: 40vw !important;
     max-width: none !important; /* remove earlier max-width constraints */
     transform: translateX(100%) !important; /* start off-screen to the right */
     transition: transform 360ms cubic-bezier(.2,.9,.3,1) !important;
