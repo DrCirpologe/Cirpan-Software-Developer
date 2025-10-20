@@ -90,7 +90,7 @@ button, input, textarea { font-size: 1rem; box-sizing: border-box; }
     left: auto !important;
     height: 100vh !important;
     /* Default: large on phones — allow up to 90vw so it feels substantial horizontally */
-    width: 45vw !important;
+    width: 35vw !important;
     max-width: none !important; /* remove earlier max-width constraints */
     transform: translateX(100%) !important; /* start off-screen to the right */
     transition: transform 360ms cubic-bezier(.2,.9,.3,1) !important;
