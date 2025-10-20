@@ -262,15 +262,17 @@
     }
 
     .section {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      scroll-snap-align: start;
-      padding: 20px;
-    }
+  /* height: 100vh; */       /* alte Höhe entfernen */
+  min-height: 250vh;         /* doppelte Viewport-Höhe */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Text oben anfangen */
+  text-align: center;
+  scroll-snap-align: start;
+  padding: 200px;        /* etwas mehr Platz oben und unten */
+}
+
 
     .headline {
       font-size: 3rem;
@@ -384,6 +386,28 @@
     
   </style>
 </head>
+ 
+<!-- Legal content styles: responsive sizing for desktop/tablet/phone -->
+<style>
+  .legal-content { width: 100%; max-width: 980px; margin: 28px auto; padding: 28px 32px; box-sizing: border-box; color: rgba(255,255,255,0.95); text-align: left; background: rgba(255,255,255,0.02); border-radius: 8px; }
+  .legal-content h4 { margin-top: 0; color: #FDC03B; font-size: 1.05rem; letter-spacing: 0.02em; }
+  .legal-content p { color: rgba(255,255,255,0.92); line-height: 1.65; margin: 0 0 12px 0; font-size: 1rem; }
+  .legal-content a { color: #FDC03B; text-decoration: underline; }
+  .legal-content strong { color: #fff; }
+
+  @media (max-width: 900px) {
+    .legal-content { padding: 22px; margin: 20px; }
+    .legal-content h4 { font-size: 1rem; }
+    .legal-content p { font-size: 0.98rem; }
+  }
+
+  @media (max-width: 600px) {
+    .legal-content { padding: 18px; margin: 14px; }
+    .headline { font-size: 2rem; }
+    .legal-content h4 { font-size: 0.95rem; }
+    .legal-content p { font-size: 0.94rem; }
+  }
+</style>
 
 <body>
   <!-- Navigation -->
@@ -428,73 +452,57 @@
   <div class="blur-circle before"></div>
   <div class="blur-circle after"></div>
 
-  <!-- Portrait inside scroll-area so it scrolls with the page on desktop/tablet -->
-  <img src="image/ich.png" alt="Ich" class="portrait" />
-
+  
 
   
 
-    <!-- Section 1 -->
+<!-- Scrollbarer Bereich -->
+<div class="scroll-area">
+  <div class=""></div>
+  <div class=""></div>
+
+
+    <!-- Datenschutz Section -->
     <section class="section text-center">
+      <h3 class="headline">Datenschutzerklärung</h3>
+      <div class="legal-content">
+        <p><strong>Stand:</strong> Oktober 2025</p>
 
-     <!-- Kontaktformular -->
-<div class="contact-form-container">
-  <h3>Schreib mir eine Nachricht</h3>
-  <form id="contactForm">
-    <input type="text" name="name" placeholder="Dein Name" required>
-    <input type="email" name="email" placeholder="Deine E-Mail" required>
-    <textarea name="message" placeholder="Deine Nachricht" rows="6" required></textarea>
-    <button type="submit">Senden</button>
-    <p id="formMessage"></p>
-  </form>
-</div>
+        <h4>1. Verantwortlicher</h4>
+        <p>CIRPAN Software Development – Oğuzhan Cirpan</p>
+        <p>[E-Mail: <a href="mailto:info.cirpan@gmail.com">info.cirpan@gmail.com</a>]</p>
+        <p>[Adresse wird nachgetragen]</p>
 
-<script>
-  // emailjs.init should be called from a centralized script with a safe configuration (avoid hardcoding keys in HTML).
+        <h4>2. Allgemeines zur Datenverarbeitung</h4>
+        <p>Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TKG 2003).</p>
 
-  const contactForm = document.getElementById('contactForm');
-  const formMessage = document.getElementById('formMessage');
+        <h4>3. Erhebung und Nutzung personenbezogener Daten</h4>
+        <p>Wenn Sie uns über das Kontaktformular oder per E-Mail kontaktieren, werden Ihre angegebenen Daten (Name, E-Mail-Adresse, Nachricht) ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Diese Daten werden nicht dauerhaft gespeichert oder weitergegeben, sofern keine Geschäftsbeziehung entsteht.</p>
 
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault(); // Standard-Submit verhindern
+        <h4>4. Verwendung von EmailJS</h4>
+        <p>Für den Versand von Kontaktformularnachrichten wird der Dienst EmailJS (<a href="https://www.emailjs.com" target="_blank" rel="noopener">https://www.emailjs.com</a>) genutzt. Dabei werden die vom Nutzer im Formular eingegebenen Daten (Name, E-Mail, Nachricht) über die Server von EmailJS an unsere E-Mail-Adresse weitergeleitet. Die Daten werden ausschließlich zur Kontaktaufnahme verwendet. Weitere Informationen zum Datenschutz von EmailJS finden Sie unter: <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener">https://www.emailjs.com/legal/privacy-policy/</a></p>
 
-    emailjs.sendForm('service_y2qfp0k', 'template_d1q49pp', this)
-      .then(() => {
-        formMessage.textContent = "Nachricht erfolgreich gesendet!";
-        contactForm.reset();
-      })
-      .catch((error) => {
-        console.error('EmailJS Fehler:', error);
-        formMessage.textContent = "Fehler beim Senden. Bitte später versuchen.";
-      });
-  });
-</script>
+        <h4>5. Hosting</h4>
+        <p>Projekte unserer Kunden können bei verschiedenen Hosting-Anbietern betrieben werden (z. B. GitHub Pages, Firebase, Netlify, Vercel oder andere). Dabei werden Serververbindungen hergestellt, die IP-Adressen technisch bedingt verarbeiten. Diese Verarbeitung ist notwendig, um die Website oder App korrekt bereitzustellen.</p>
 
+        <h4>6. Cookies und Analyse-Tools</h4>
+        <p>Unsere Website verwendet derzeit keine Cookies und keine Analysetools (wie Google Analytics). Sollte sich dies ändern, wird diese Datenschutzerklärung entsprechend angepasst.</p>
 
- </section>
+        <h4>7. Rechte der betroffenen Personen</h4>
+        <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch. Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt, können Sie sich an die Datenschutzbehörde wenden.</p>
+        <p><strong>Kontakt zur Behörde:</strong><br>Österreichische Datenschutzbehörde<br>Barichgasse 40–42, 1030 Wien<br>E-Mail: <a href="mailto:dsb@dsb.gv.at">dsb@dsb.gv.at</a></p>
 
- <section  class="section">
-  <!-- Kontakttext -->
-  <div class="contact-text-container">
-    <h2>Kontaktiere mich</h2>
-
-    <!-- Telefonnummer Button -->
-    <a href="tel:**** *** ****" class="phone-button">📞 **** *** ****</a>
-
-    <!-- Unsichtbare E-Mail für Funktion -->
-    <a href="mailto:ocirpan920@gmail.com" id="emailLink" style="display:none;">E-Mail senden</a>
-
-    <!-- Social Buttons -->
-    <div class="social-buttons">
-      <button id="linkedinBtn">LinkedIn</button>
-      <button id="githubBtn">GitHub</button>
-    </div>
+        <h4>8. Speicherung und Löschung</h4>
+        <p>Anfragen per E-Mail oder Kontaktformular werden nach abschließender Bearbeitung gelöscht, sofern keine gesetzliche Aufbewahrungspflicht besteht.</p>
+      </div>
+    </section>
   </div>
 
-    </section>
 
 
-  <!-- portrait removed from contact page; appears only on home (mobile) -->
+   
+
+
 
 <!-- Footer (außerhalb von scroll-area) -->
 <footer id="footer-placeholder" style="width: 100%;"></footer>
@@ -550,6 +558,30 @@
   }
 </style>
 
+<style>
+  /* Responsive overrides to match AGB layout on tablet and mobile */
+  @media (max-width: 900px) {
+    .section { padding: 140px 18px 32px 18px; }
+    .headline { font-size: 1.8rem; }
+    .legal-content { padding: 20px; margin: 18px; }
+  }
+
+  @media (max-width: 600px) {
+    body { overflow-y: auto; }
+    .navbar { padding: 14px 16px; }
+    .nav-links-container { display: none; }
+    .hamburger { display: block; width: 34px; height: 24px; cursor: pointer; }
+    .hamburger .bar { height: 3px; background: #fff; margin: 5px 0; border-radius: 2px; }
+    .section { padding: 110px 12px 28px 12px; }
+    .headline { font-size: 1.4rem; }
+    .legal-content { padding: 16px; margin: 12px; font-size: 0.95rem; }
+    /* shift main text down by 60px on smartphones */
+    .section { transform: translateY(60px); }
+  }
+
+  @media (min-width: 601px) { .hamburger { display: none; } }
+</style>
+
 <!-- Footer laden -->
 <script>
   fetch('footer.html')
@@ -567,3 +599,4 @@
   
 </body>
 </html>
+

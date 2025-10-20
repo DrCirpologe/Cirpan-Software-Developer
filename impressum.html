@@ -261,16 +261,17 @@
       mask-image: linear-gradient(to bottom, transparent 70px, black 200px, black calc(100% - 100px), transparent 100%);
     }
 
-    .section {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      scroll-snap-align: start;
-      padding: 20px;
-    }
+        .section {
+  /* height: 100vh; */       /* alte Höhe entfernen */
+  min-height: flex;         /* doppelte Viewport-Höhe */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Text oben anfangen */
+  text-align: center;
+  scroll-snap-align: start;
+  padding: 200px 10px;        /* etwas mehr Platz oben und unten */
+}
 
     .headline {
       font-size: 3rem;
@@ -384,6 +385,52 @@
     
   </style>
 </head>
+ 
+<!-- Legal content styles: responsive sizing for desktop/tablet/phone -->
+<style>
+  .legal-content { width: 100%; max-width: 980px; margin: 28px auto; padding: 28px 32px; box-sizing: border-box; color: rgba(255,255,255,0.95); text-align: left; background: rgba(255,255,255,0.02); border-radius: 8px; }
+  .legal-content h4 { margin-top: 0; color: #FDC03B; font-size: 1.05rem; letter-spacing: 0.02em; }
+  .legal-content p { color: rgba(255,255,255,0.92); line-height: 1.65; margin: 0 0 12px 0; font-size: 1rem; }
+  .legal-content a { color: #FDC03B; text-decoration: underline; }
+  .legal-content strong { color: #fff; }
+
+  @media (max-width: 900px) {
+    .legal-content { padding: 22px; margin: 20px; }
+    .legal-content h4 { font-size: 1rem; }
+    .legal-content p { font-size: 0.98rem; }
+  }
+
+  @media (max-width: 600px) {
+    .legal-content { padding: 18px; margin: 14px; }
+    .headline { font-size: 2rem; }
+    .legal-content h4 { font-size: 0.95rem; }
+    .legal-content p { font-size: 0.94rem; }
+  }
+</style>
+
+  <style>
+    /* Responsive overrides to match AGB layout on tablet and mobile */
+    @media (max-width: 900px) {
+      .section { padding: 140px 18px 32px 18px; }
+      .headline { font-size: 1.8rem; }
+      .legal-content { padding: 20px; margin: 18px; }
+    }
+
+    @media (max-width: 600px) {
+      body { overflow-y: auto; }
+      .navbar { padding: 14px 16px; }
+      .nav-links-container { display: none; }
+      .hamburger { display: block; width: 34px; height: 24px; cursor: pointer; }
+      .hamburger .bar { height: 3px; background: #fff; margin: 5px 0; border-radius: 2px; }
+      .section { padding: 110px 12px 28px 12px; }
+      .headline { font-size: 1.4rem; }
+      .legal-content { padding: 16px; margin: 12px; font-size: 0.95rem; }
+      /* Verschiebe Text auf Smartphones um 60px nach unten */
+      .section { transform: translateY(60px); }
+    }
+
+    @media (min-width: 601px) { .hamburger { display: none; } }
+  </style>
 
 <body>
   <!-- Navigation -->
@@ -428,73 +475,66 @@
   <div class="blur-circle before"></div>
   <div class="blur-circle after"></div>
 
-  <!-- Portrait inside scroll-area so it scrolls with the page on desktop/tablet -->
-  <img src="image/ich.png" alt="Ich" class="portrait" />
-
 
   
 
-    <!-- Section 1 -->
-    <section class="section text-center">
+<!-- Scrollbarer Bereich -->
+<div class="scroll-area">
+  <div class=""></div>
+  <div class=""></div>
 
-     <!-- Kontaktformular -->
-<div class="contact-form-container">
-  <h3>Schreib mir eine Nachricht</h3>
-  <form id="contactForm">
-    <input type="text" name="name" placeholder="Dein Name" required>
-    <input type="email" name="email" placeholder="Deine E-Mail" required>
-    <textarea name="message" placeholder="Deine Nachricht" rows="6" required></textarea>
-    <button type="submit">Senden</button>
-    <p id="formMessage"></p>
-  </form>
+
+  <!-- Section 1 -->
+  <section class="section text-center">
+    <h3 class="headline">Impressum</h3>
+    <div class="legal-content">
+      <h4>Unternehmen</h4>
+      <p>CIRPAN Software Development – Oğuzhan Cirpan</p>
+
+      <h4>Inhaber</h4>
+      <p>Oğuzhan Cirpan</p>
+
+      <h4>E-Mail</h4>
+      <p><a href="mailto:info.cirpan@gmail.com">info.cirpan@gmail.com</a></p>
+
+      <h4>Adresse</h4>
+      <p>[wird nachgetragen]</p>
+    
+
+
+      <h4>Gewerbeart</h4>
+      <p>Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik</p>
+
+      <h4>Behörde</h4>
+      <p>zuständige Gewerbebehörde: [z. B. Magistrat Wien – bitte später ergänzen]</p>
+
+      <h4>Umsatzsteuer-Identifikationsnummer (UID)</h4>
+      <p>[keine UID vorhanden]</p>
+
+      <h4>Online-Streitbeilegung</h4>
+      <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: 
+        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>
+      </p>
+      <p>Wir sind nicht verpflichtet und nicht bereit, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+ 
+
+
+      <h4>Haftungsausschluss</h4>
+      <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. 
+        Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+
+      <h4>Urheberrecht</h4>
+      <p>Alle Inhalte (Texte, Bilder, Designs, Quellcode) dieser Website unterliegen dem Urheberrecht. 
+        Eine Verwendung ohne ausdrückliche Genehmigung ist nicht gestattet.</p>
+    </div>
+  </section>
 </div>
 
-<script>
-  // emailjs.init should be called from a centralized script with a safe configuration (avoid hardcoding keys in HTML).
-
-  const contactForm = document.getElementById('contactForm');
-  const formMessage = document.getElementById('formMessage');
-
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault(); // Standard-Submit verhindern
-
-    emailjs.sendForm('service_y2qfp0k', 'template_d1q49pp', this)
-      .then(() => {
-        formMessage.textContent = "Nachricht erfolgreich gesendet!";
-        contactForm.reset();
-      })
-      .catch((error) => {
-        console.error('EmailJS Fehler:', error);
-        formMessage.textContent = "Fehler beim Senden. Bitte später versuchen.";
-      });
-  });
-</script>
 
 
- </section>
-
- <section  class="section">
-  <!-- Kontakttext -->
-  <div class="contact-text-container">
-    <h2>Kontaktiere mich</h2>
-
-    <!-- Telefonnummer Button -->
-    <a href="tel:**** *** ****" class="phone-button">📞 **** *** ****</a>
-
-    <!-- Unsichtbare E-Mail für Funktion -->
-    <a href="mailto:ocirpan920@gmail.com" id="emailLink" style="display:none;">E-Mail senden</a>
-
-    <!-- Social Buttons -->
-    <div class="social-buttons">
-      <button id="linkedinBtn">LinkedIn</button>
-      <button id="githubBtn">GitHub</button>
-    </div>
-  </div>
-
-    </section>
+   
 
 
-  <!-- portrait removed from contact page; appears only on home (mobile) -->
 
 <!-- Footer (außerhalb von scroll-area) -->
 <footer id="footer-placeholder" style="width: 100%;"></footer>
@@ -567,3 +607,4 @@
   
 </body>
 </html>
+

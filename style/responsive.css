@@ -50,7 +50,7 @@ button, input, textarea { font-size: 1rem; box-sizing: border-box; }
     Provide per-page adjustments so each page can have its own top offset on small screens. */
   body.home .scroll-area { padding-top: calc(40px + 16vh); }
   body.project .scroll-area { padding-top: calc(20px + 15vh); }
-  body.about .scroll-area { padding-top: calc(200px + 15vh); }
+  body.about .scroll-area { padding-top: calc(-200px + 15vh); }
   body.reachout .scroll-area { padding-top: calc(-100px + 14vh); }
   /* Fallback for any other pages */
   .scroll-area { padding-top: calc(70px + 15vh); }

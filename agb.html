@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGB – CIRPAN Software Development</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+  <!-- Externe CSS -->
+  <link rel="stylesheet" href="style/contact.css">
+  <link rel="stylesheet" href="style/responsive.css">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background-color: #121212;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      overflow-y: auto; /* Body scrollt jetzt */
+      position: relative;
+    }
+
+    body::after, body::before {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: -1;
+    }
+
+    body::before {
+      background: linear-gradient(45deg, #FFD439, transparent);
+      bottom: -100px;
+      left: -100px;
+      width: 480px;
+      height: 480px;
+    }
+
+    body::after {
+      background: linear-gradient(225deg, #FFD439, transparent);
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+    }
+
+    .navbar {
+      position: sticky; /* jetzt sticky statt absolute */
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 50px;
+      box-sizing: border-box;
+      z-index: 20;
+      background: transparent;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .cyber-blue { color: #00ffff; }
+    .cursor-blink { animation: blink 1s step-start infinite; }
+
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .logo-symbols {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 6px;
+      position: relative;
+      top: -5px;
+    }
+
+    .logo-symbols span { font-size: 2rem; font-weight: 800; line-height: 1; }
+
+    .logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .logo-text .main { font-size: 1.8rem; font-weight: 800; color: white; letter-spacing: -0.05em; margin-bottom: 2px; }
+    .logo-text .sub { font-size: 0.6rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.15em; text-align: left; margin-left: 0.25rem; position: relative; left: -5px; top: 5px; }
+
+    .nav-links-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-link {
+      margin: 0 18px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: color 0.3s;
+    }
+
+    .nav-link:first-of-type { color: #FDC03B; }
+    .nav-link:hover { color: #FDC03B; }
+
+    .reach-out-button {
+      margin-left: 30px;
+      background-color: #FDC03B;
+      color: black;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      position: relative;
+      animation: glow 1.8s infinite alternate;
+      box-shadow: 0 0 15px rgba(253, 192, 59, 0.6);
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .reach-out-button:hover {
+      background-color: #FFD700;
+      box-shadow: 0 0 25px rgba(253, 192, 59, 0.8);
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 10px rgba(253,192,59,0.4), 0 0 20px rgba(253,192,59,0.3), 0 0 30px rgba(253,192,59,0.2); }
+      50% { box-shadow: 0 0 20px rgba(253,192,59,0.8), 0 0 30px rgba(253,192,59,0.6), 0 0 40px rgba(253,192,59,0.4); }
+      100% { box-shadow: 0 0 10px rgba(253,192,59,0.4), 0 0 20px rgba(253,192,59,0.3), 0 0 30px rgba(253,192,59,0.2); }
+    }
+
+    .click-me-arrow {
+      position: absolute;
+      top: calc(-45px + 125px);
+      right: calc(0px + 40px);
+      color: #FDC03B;
+      font-size: 1rem;
+      font-weight: 600;
+      white-space: nowrap;
+      pointer-events: none;
+      transform: rotate(-20deg);
+    }
+
+    .click-me-arrow::before { content: '↑'; display: block; font-size: 2rem; line-height: 0.8; text-align: center; margin-bottom: 5px; }
+
+    .scroll-area {
+      position: relative;
+      width: 100%;
+      padding-bottom: 260px; /* Platz für Footer */
+    }
+
+    .section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: left;
+      padding: 200px 20px 40px 20px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .legal-content {
+      width: 100%;
+      padding: 28px 32px;
+      box-sizing: border-box;
+      color: rgba(255,255,255,0.95);
+      background: rgba(255,255,255,0.02);
+      border-radius: 8px;
+      margin-bottom: 40px;
+    }
+
+    .legal-content h4 { margin-top: 0; color: #FDC03B; font-size: 1.05rem; letter-spacing: 0.02em; }
+    .legal-content p { color: rgba(255,255,255,0.92); line-height: 1.65; margin: 0 0 12px 0; font-size: 1rem; }
+
+    /* Footer-Styling */
+    footer {
+      background-color: #121212;
+      color: white;
+      width: 100%;
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+    }
+
+    footer a:hover { color: #FDC03B; }
+  </style>
+  <style>
+    /* Responsive overrides for tablet and mobile */
+    @media (max-width: 900px) {
+      .section { padding: 140px 18px 32px 18px; }
+      .headline { font-size: 1.8rem; text-align: center; }
+      .legal-content { padding: 20px; margin: 18px; }
+    }
+
+    @media (max-width: 600px) {
+      .navbar { padding: 14px 16px; }
+      .nav-links-container { display: none; }
+      .hamburger { display: block; width: 34px; height: 24px; cursor: pointer; }
+      .hamburger .bar { height: 3px; background: #fff; margin: 5px 0; border-radius: 2px; }
+      .section { padding: 110px 12px 28px 12px; }
+      .headline { font-size: 1.4rem; }
+      .legal-content { padding: 16px; margin: 12px; font-size: 0.95rem; }
+    }
+
+    /* hide hamburger on large screens */
+    @media (min-width: 601px) { .hamburger { display: none; } }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <div class="logo-symbols">
+        <span class="cyber-blue">{</span>
+        <span class="text-white" style="margin: 0 6px;">C</span>
+        <span class="cyber-blue cursor-blink">}</span>
+      </div>
+      <div class="logo-text">
+        <span class="main">IRPAN</span>
+        <span class="sub">Software Development</span>
+      </div>
+    </a>
+
+    <!-- Hamburger for small screens (appears via CSS) -->
+    <div class="hamburger" aria-label="Öffne Navigation" role="button">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
+    <div class="nav-links-container">
+      <a href="index.html" class="nav-link">HOME</a>
+      <a href="index.html#about" class="nav-link">ABOUT</a>
+      <a href="project.html" class="nav-link">PROJECT</a>
+      <button class="reach-out-button" onclick="window.location.href='reachOut.html'">
+        REACH OUT
+        <span class="click-me-arrow">click me</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Scrollbarer Bereich -->
+  <div class="scroll-area">
+    <section class="section">
+      <h3 class="headline">Allgemeine Geschäftsbedingungen (AGB)</h3>
+      <div class="legal-content">
+        <p><strong>Stand:</strong> Oktober 2025</p>
+
+        <h4>1. Geltungsbereich</h4>
+        <p>Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen CIRPAN Software Development – Oğuzhan Cirpan (nachfolgend „Anbieter“) und seinen Kunden (nachfolgend „Kunde“) über die Erstellung von Websites, mobilen Apps, Softwarelösungen sowie ergänzenden Dienstleistungen wie Hosting, Wartung, Design oder Domainservice.</p>
+
+        <h4>2. Vertragsabschluss</h4>
+        <p>Ein Vertrag kommt zustande, sobald der Kunde ein schriftliches oder elektronisches Angebot des Anbieters (z. B. per E-Mail) annimmt oder eine entsprechende Beauftragung bestätigt.</p>
+
+        <h4>3. Leistungsumfang</h4>
+        <p>Der genaue Leistungsumfang wird im jeweiligen Angebot oder Vertrag festgelegt. Der Anbieter erbringt ausschließlich digitale Dienstleistungen. Eine physische Lieferung erfolgt nicht.</p>
+
+        <h4>4. Preise und Zahlung</h4>
+        <p>Alle Preise verstehen sich in Euro, exkl. gesetzlicher Umsatzsteuer (sofern anwendbar). Die Zahlung erfolgt – sofern nicht anders vereinbart – per Überweisung. Üblicherweise: 50 % Anzahlung bei Beauftragung, 50 % nach Fertigstellung. Bei monatlichen Abos erfolgt die Abrechnung regelmäßig am Monatsanfang.</p>
+
+        <h4>5. Laufzeit und Kündigung</h4>
+        <p>Bei Einmalaufträgen endet das Vertragsverhältnis automatisch mit Abschluss der vereinbarten Leistung. Bei monatlichen Abos besteht eine Mindestlaufzeit von 12 Monaten; danach kann der Vertrag von beiden Seiten mit einer Frist von 30 Tagen zum Monatsende gekündigt werden.</p>
+
+        <h4>6. Nutzungsrechte</h4>
+        <p>Nach vollständiger Bezahlung erhält der Kunde das einfache, zeitlich unbegrenzte Nutzungsrecht an den erstellten Werken (Website, App, Code). Der Anbieter darf Projekte zu Referenzzwecken auf seiner Website oder in Portfolios darstellen, sofern der Kunde dem nicht ausdrücklich widerspricht.</p>
+
+        <h4>7. Haftung</h4>
+        <p>Der Anbieter haftet nur für Schäden, die durch grobe Fahrlässigkeit oder Vorsatz verursacht wurden. Für indirekte Schäden, Folgeschäden, entgangenen Gewinn oder Datenverlust wird keine Haftung übernommen.</p>
+
+        <h4>8. Gewährleistung</h4>
+        <p>Etwaige Mängel sind binnen 14 Tagen nach Lieferung schriftlich mitzuteilen. Der Anbieter ist berechtigt, Mängel durch Nachbesserung oder Austausch zu beheben.</p>
+
+        <h4>9. Widerrufsrecht (digitale Leistungen)</h4>
+        <p>Der Kunde stimmt ausdrücklich zu, dass der Anbieter vor Ablauf der 14-tägigen Widerrufsfrist mit der Vertragserfüllung beginnt. Der Kunde nimmt zur Kenntnis, dass mit Beginn der Leistungserbringung das Widerrufsrecht erlischt (§ 18 Abs. 1 Z 11 FAGG).</p>
+
+        <h4>10. Datenschutz</h4>
+        <p>Personenbezogene Daten werden nur im Rahmen der gesetzlichen Bestimmungen verarbeitet (siehe Datenschutzerklärung).</p>
+
+        <h4>11. Erfüllungsort und Gerichtsstand</h4>
+        <p>Erfüllungsort ist der Sitz des Anbieters. Es gilt österreichisches Recht unter Ausschluss des UN-Kaufrechts. Gerichtsstand ist das sachlich zuständige Gericht am Sitz des Anbieters.</p>
+
+        <h4>12. Salvatorische Klausel</h4>
+        <p>Sollte eine Bestimmung dieser AGB unwirksam sein, bleiben die übrigen Bestimmungen davon unberührt.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer-placeholder"></footer>
+
+  <!-- Footer laden -->
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      })
+      .catch(err => console.error('Fehler beim Laden des Footers:', err));
+  </script>
+
+  <!-- Mobile nav script -->
+  <script src="js/mobile-nav.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
