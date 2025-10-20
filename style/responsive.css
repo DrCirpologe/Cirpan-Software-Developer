@@ -95,7 +95,7 @@ button, input, textarea { font-size: 1rem; box-sizing: border-box; }
     inset: 0 !important; /* top:0; right:0; bottom:0; left:0 */
     width: 100% !important;
     height: 100vh !important;
-    background: rgba(0,0,0,0.28) !important; /* subtle backdrop */
+    background: rgba(0,0,0,0.5) !important; /* increased opacity: darker backdrop */
     display: block !important;
     z-index: 3999 !important;
     opacity: 0 !important;
@@ -106,7 +106,7 @@ button, input, textarea { font-size: 1rem; box-sizing: border-box; }
 
   /* inner panel slides in from the right. Make the panel itself control horizontal size
      and the overlay act purely as a backdrop so the sheet can be as wide as desired. */
-  .mobile-nav-overlay .mobile-inner {
+  .mobile-nav-overlay.open .mobile-inner { transform: translateX(0) !important; 
     position: absolute !important;
     top: 0 !important;
     right: 0 !important;
@@ -119,7 +119,7 @@ button, input, textarea { font-size: 1rem; box-sizing: border-box; }
     transform: translateX(100%) !important; /* start off-screen to the right */
     transition: transform 360ms cubic-bezier(.2,.9,.3,1) !important;
     /* subtle gradient: dark on the left edge, gentle yellow toward the right */
-    background: linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 40%, rgba(253,192,59,0.14) 100%) !important;
+    background: linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 40%, rgba(253,192,59,0.14) 60%) !important;
     padding: 22px 18px !important;
     box-shadow: -8px 0 30px rgba(0,0,0,0.45) !important;
     border-top-left-radius: 6px !important;
@@ -127,7 +127,9 @@ button, input, textarea { font-size: 1rem; box-sizing: border-box; }
     z-index: 4000 !important;
   }
   /* open state: slide the inner panel into view */
-  .mobile-nav-overlay.open .mobile-inner { transform: translateX(0) !important; }
+  .mobile-nav-overlay.open .mobile-inner { transform: translateX(0) !important;
+     width: 40vw !important;
+     }
 
   /* Optional modifier: make the inner panel extra-wide (full viewport width) when desired.
      You can toggle this class from JS to create an extra 'push' sheet effect. */

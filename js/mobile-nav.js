@@ -13,8 +13,8 @@
     overlay.className = 'mobile-nav-overlay';
     overlay.setAttribute('aria-hidden', 'true');
     overlay.innerHTML = '<div class="mobile-inner">'
-      + '<button class="mobile-close" aria-label="Schliessen">✕</button>'
-      + '<nav class="mobile-links"><a href="index.html">HOME</a><a href="index.html#about">ABOUT</a><a href="project.html">PROJECT</a><a href="reachOut.html">REACH OUT</a></nav>'
+  + '<button class="mobile-close" aria-label="Schliessen">✕</button>'
+  + '<nav class="mobile-links"><a href="index.html">START</a><a href="index.html#about">ÜBER</a><a href="project.html">PROJEKTE</a><a href="reachOut.html">KONTAKT</a></nav>'
       + '</div>';
     document.body.appendChild(overlay);
   }
