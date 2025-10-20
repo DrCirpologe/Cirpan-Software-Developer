@@ -13,6 +13,7 @@
 
   <!-- Externe CSS -->
   <link rel="stylesheet" href="style/project.css">
+  <link rel="stylesheet" href="style/responsive.css">
 </head>
 
   <style>
@@ -356,7 +357,7 @@
   </style>
 </head>
 
-<body>
+<body class="project">
   <!-- Navigation -->
   <header class="navbar">
     <a href="#" class="logo">
@@ -370,6 +371,13 @@
         <span class="sub">Software Development</span>
       </div>
     </a>
+
+    <!-- Hamburger (visible on small screens via responsive.css) -->
+    <div class="hamburger" aria-label="Öffne Navigation" role="button">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
 
     <div class="nav-links-container">
       <a href="index.html" class="nav-link">HOME</a>
@@ -389,6 +397,9 @@
       <!-- Gelbe Blur-Flecken in scroll-area -->
   <div class="blur-circle before"></div>
   <div class="blur-circle after"></div>
+
+  <!-- Portrait inside scroll-area so it scrolls with the page on desktop/tablet -->
+  <img src="image/ich.png" alt="Ich" class="portrait" />
 
 
   
@@ -420,8 +431,7 @@
     </section>
 
 
-  <!-- Bild -->
-  <img src="image/ich.png" alt="Ich" class="portrait" />
+  <!-- portrait removed from project page; appears only on home (mobile) -->
 
 <!-- Footer (außerhalb von scroll-area) -->
 <footer id="footer-placeholder" style="width: 100%;"></footer>
@@ -487,6 +497,12 @@
     .catch(err => console.error('Fehler beim Laden des Footers:', err));
 </script>
 
+<!-- Mobile nav script -->
+<script src="js/mobile-nav.js"></script>
+<script src="js/index.js"></script>
+
   
 </body>
 </html>
+
+

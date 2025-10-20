@@ -13,9 +13,10 @@
 
   <!-- Externe CSS -->
   <link rel="stylesheet" href="style/contact.css">
+  <link rel="stylesheet" href="style/responsive.css">
 </head>
 
-<body>
+<body class="reachout">
 
   <!-- Navigation -->
   <header class="navbar">
@@ -399,6 +400,13 @@
       </div>
     </a>
 
+    <!-- Hamburger (visible on small screens via responsive.css) -->
+    <div class="hamburger" aria-label="Öffne Navigation" role="button">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
     <div class="nav-links-container">
       <a href="index.html" class="nav-link">HOME</a>
       <a href="index.html#about" class="nav-link">ABOUT</a>
@@ -411,12 +419,17 @@
     </div>
   </header>
 
+  <!-- fixed portrait removed; scrollable portrait remains inside .scroll-area -->
+
   <!-- Scrollbarer Bereich -->
   <div class="scroll-area">
 
       <!-- Gelbe Blur-Flecken in scroll-area -->
   <div class="blur-circle before"></div>
   <div class="blur-circle after"></div>
+
+  <!-- Portrait inside scroll-area so it scrolls with the page on desktop/tablet -->
+  <img src="image/ich.png" alt="Ich" class="portrait" />
 
 
   
@@ -436,27 +449,39 @@
   </form>
 </div>
 
+<!-- Load EmailJS SDK and initialize (required for emailjs.sendForm) -->
+<script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
 <script>
+  // initialize EmailJS with your public user ID (safe to use public key)
+  if (window.emailjs && typeof emailjs.init === 'function') {
+    emailjs.init('y3DYAOkaoWSL6brCU');
+  }
+
+  // Form handling: send via EmailJS
   (function(){
-    emailjs.init("deine_userID"); // <-- Hier deine EmailJS User ID eintragen
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault(); // prevent normal submit
+
+      if (!window.emailjs) {
+        if (formMessage) formMessage.textContent = 'Sende-Modul nicht verfügbar. Bitte später versuchen.';
+        return;
+      }
+
+      emailjs.sendForm('service_y2qfp0k', 'template_d1q49pp', this)
+        .then(() => {
+          if (formMessage) formMessage.textContent = 'Nachricht erfolgreich gesendet!';
+          this.reset();
+        })
+        .catch((error) => {
+          console.error('EmailJS Fehler:', error);
+          if (formMessage) formMessage.textContent = 'Fehler beim Senden. Bitte später versuchen.';
+        });
+    });
   })();
-
-  const contactForm = document.getElementById('contactForm');
-  const formMessage = document.getElementById('formMessage');
-
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault(); // Standard-Submit verhindern
-
-    emailjs.sendForm('service_y2qfp0k', 'template_d1q49pp', this)
-      .then(() => {
-        formMessage.textContent = "Nachricht erfolgreich gesendet!";
-        contactForm.reset();
-      })
-      .catch((error) => {
-        console.error('EmailJS Fehler:', error);
-        formMessage.textContent = "Fehler beim Senden. Bitte später versuchen.";
-      });
-  });
 </script>
 
 
@@ -483,8 +508,7 @@
     </section>
 
 
-  <!-- Bild -->
-  <img src="image/ich.png" alt="Ich" class="portrait" />
+  <!-- portrait removed from contact page; appears only on home (mobile) -->
 
 <!-- Footer (außerhalb von scroll-area) -->
 <footer id="footer-placeholder" style="width: 100%;"></footer>
@@ -549,6 +573,10 @@
     })
     .catch(err => console.error('Fehler beim Laden des Footers:', err));
 </script>
+
+<!-- Mobile nav script -->
+<script src="js/mobile-nav.js"></script>
+<script src="js/index.js"></script>
 
   
 </body>

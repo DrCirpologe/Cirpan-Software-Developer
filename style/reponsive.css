@@ -1,0 +1,62 @@
+/* === Hamburger Menü === */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 25;
+}
+
+.bar {
+  height: 3px;
+  width: 100%;
+  background-color: #FDC03B;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* === Menü für mobile Geräte === */
+@media (max-width: 900px) {
+  .nav-links-container {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background-color: rgba(18, 18, 18, 0.95);
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  }
+
+  .nav-links-container.active {
+    display: flex;
+  }
+
+  .nav-link {
+    margin: 15px 0;
+    font-size: 1.1rem;
+  }
+
+  .reach-out-button {
+    margin-top: 15px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Animation für "X" beim Öffnen */
+  .hamburger.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+}

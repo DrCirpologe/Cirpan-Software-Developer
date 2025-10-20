@@ -9,6 +9,7 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
     rel="stylesheet"
   />
+  <link rel="stylesheet" href="style/responsive.css">
 
   <style>
     /* === Grundlayout === */
@@ -130,6 +131,8 @@
       display: flex;
       align-items: center;
     }
+
+    
 
     .nav-link {
       margin: 0 18px;
@@ -351,32 +354,39 @@
   </style>
 </head>
 
-<body>
+<body class="home">
   <!-- Navigation -->
-  <header class="navbar">
-    <a href="#" class="logo">
-      <div class="logo-symbols">
-        <span class="cyber-blue">{</span>
-        <span class="text-white" style="margin: 0 6px;">C</span>
-        <span class="cyber-blue cursor-blink">}</span>
-      </div>
-      <div class="logo-text">
-        <span class="main">IRPAN</span>
-        <span class="sub">Software Development</span>
-      </div>
-    </a>
-
-    <div class="nav-links-container">
-      <a href="#home" class="nav-link">HOME</a>
-      <a href="#about" class="nav-link">ABOUT</a>
-      <a href="project.html" class="nav-link">PROJECT</a>
-
-      <button class="reach-out-button" onclick="window.location.href='reachOut.html'">
-        REACH OUT
-        <span class="click-me-arrow">click me</span>
-      </button>
+<header class="navbar">
+  <a href="#home" class="logo">
+    <div class="logo-symbols">
+      <span class="cyber-blue">{</span>
+      <span class="text-white" style="margin: 0 6px;">C</span>
+      <span class="cyber-blue cursor-blink">}</span>
     </div>
-  </header>
+    <div class="logo-text">
+      <span class="main">IRPAN</span>
+      <span class="sub">Software Development</span>
+    </div>
+  </a>
+
+  <!-- Hamburger Button (nur sichtbar auf kleinen Screens) -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <nav class="nav-links-container">
+    <a href="#home" class="nav-link">HOME</a>
+    <a href="#about" class="nav-link">ABOUT</a>
+    <a href="project.html" class="nav-link">PROJECT</a>
+    <button class="reach-out-button" onclick="window.location.href='reachOut.html'">
+      REACH OUT
+      <span class="click-me-arrow">click me</span>
+    </button>
+  </nav>
+</header>
+
 
   <!-- Scrollbarer Bereich -->
   <div class="scroll-area">
@@ -391,6 +401,8 @@
       <p class="subtitle">HI, ICH BIN OGUZHAN</p>
       <h3 class="headline">ICH ERSTELLE DIE <br> PERFEKTEN WEBSITES <br> UND APPS</h3>
       <p class="tagline">FÜR DEIN UNTERNEHMEN!</p>
+      <!-- portrait shown only on home + mobile via responsive.css -->
+      <img src="image/ich.png" alt="Ich" class="portrait" />
     </section>
 
     <!-- Section 2 (About) -->
@@ -436,8 +448,7 @@
     </section>
 
 
-  <!-- Bild -->
-  <img src="image/ich.png" alt="Ich" class="portrait" />
+  <!-- portrait moved into #home section (home-only, mobile-only) -->
 
 <!-- Footer (außerhalb von scroll-area) -->
 <footer id="footer-placeholder" style="width: 100%;"></footer>
@@ -494,8 +505,9 @@
 </style>
 
 <!-- Footer laden -->
-<!-- Load DOMPurify then centralized footer loader (js/index.js) -->
+<!-- Load DOMPurify then mobile-nav and centralized footer loader -->
 <script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
+<script src="js/mobile-nav.js"></script>
 <script src="js/index.js"></script>
 
   
