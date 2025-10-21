@@ -84,8 +84,9 @@ class ModernWebsite {
 
     if (!mobileMenuBtn || !mobileNav) return;
 
-    mobileMenuBtn.addEventListener('click', () => {
-      const isOpen = mobileNav.style.display === 'block';
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isOpen = mobileNav.classList.contains('active');
       
       if (isOpen) {
         this.closeMobileMenu();
@@ -110,7 +111,7 @@ class ModernWebsite {
 
     // Close on escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileNav.style.display === 'block') {
+      if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
         this.closeMobileMenu();
       }
     });
@@ -120,7 +121,10 @@ class ModernWebsite {
     const mobileNav = document.getElementById('mobile-nav');
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     
-    mobileNav.style.display = 'block';
+    mobileNav.style.display = 'flex';
+    setTimeout(() => {
+      mobileNav.classList.add('active');
+    }, 10);
     document.body.style.overflow = 'hidden';
     mobileMenuBtn.classList.add('active');
     
@@ -141,9 +145,13 @@ class ModernWebsite {
     const mobileNav = document.getElementById('mobile-nav');
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     
-    mobileNav.style.display = 'none';
+    mobileNav.classList.remove('active');
     document.body.style.overflow = 'auto';
     mobileMenuBtn.classList.remove('active');
+    
+    setTimeout(() => {
+      mobileNav.style.display = 'none';
+    }, 300); // Wait for transition to complete
   }
 
   // Advanced Scroll Animations

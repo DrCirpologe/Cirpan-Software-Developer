@@ -319,6 +319,10 @@
         gap: var(--space-2xl);
       }
       
+      .contact-hero {
+        padding: calc(var(--space-4xl) + 20px) 0 var(--space-3xl);
+      }
+      
       .form-row {
         grid-template-columns: 1fr;
       }
@@ -344,7 +348,13 @@
       }
       
       .contact-hero {
-        padding: var(--space-3xl) 0 var(--space-2xl);
+        padding: calc(var(--space-3xl) + 35px) 0 var(--space-2xl);
+      }
+      
+      /* Footer Services und Legal Sektionen nach rechts verschieben */
+      footer .grid > div:nth-child(2),
+      footer .grid > div:nth-child(3) {
+        margin-left: 5px;
       }
     }
   </style>
@@ -671,20 +681,8 @@
   <script src="js/cookie-consent.js"></script>
   <script src="js/modern.js"></script>
   <script>
-    // Mobile menu toggle
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileNav = document.getElementById('mobile-nav');
-    
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
-    });
-    
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileNav.style.display = 'none';
-      });
-    });
+    // Diese Funktionalität wird jetzt von modern.js übernommen
+    // Mobile menu wird automatisch initialisiert
 
     // EmailJS Initialisierung
     emailjs.init('y3DYAOkaoWSL6brCU');
