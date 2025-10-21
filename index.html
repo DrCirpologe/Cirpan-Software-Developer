@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meine Website</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="style/responsive.css">
-
-  <!-- SEO / Social -->
-  <title>CIRPAN Software Development — Web & App Entwicklung | Oğuzhan Cirpan</title>
-  <meta name="description" content="CIRPAN Software Development entwickelt moderne Web‑ und Mobile‑Apps sowie maßgeschneiderte Softwarelösungen. Kontakt: info.cirpan@gmail.com">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIRPAN Software Development — Moderne Web & App Entwicklung</title>
+  
+  <!-- SEO & Meta -->
+  <meta name="description" content="Professionelle Software-Entwicklung mit modernen Technologien. Spezialisiert auf iOS Apps, Android Apps und responsive Websites. Von CIRPAN Software Development.">
+  <meta name="keywords" content="Software Entwicklung, iOS App, Android App, Website, Swift, Kotlin, JavaScript, Responsive Design">
   <link rel="canonical" href="https://deinedomain.tld/">
-
+  
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CIRPAN Software Development — Web & App Entwicklung">
-  <meta property="og:description" content="Moderne Apps, Webseiten und Softwarelösungen von CIRPAN Software Development.">
+  <meta property="og:title" content="CIRPAN Software Development — Moderne Software-Lösungen">
+  <meta property="og:description" content="Professionelle Entwicklung von iOS Apps, Android Apps und modernen Websites mit neuesten Technologien.">
   <meta property="og:url" content="https://deinedomain.tld/">
   <meta property="og:image" content="https://deinedomain.tld/image/ich.png">
+  
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="CIRPAN Software Development">
-  <meta name="twitter:description" content="Moderne Apps, Webseiten und Softwarelösungen von CIRPAN Software Development.">
+  <meta name="twitter:description" content="Moderne Apps, Websites und Software-Lösungen">
   <meta name="twitter:image" content="https://deinedomain.tld/image/ich.png">
-
+  
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -34,510 +32,753 @@
     "url": "https://deinedomain.tld/",
     "logo": "https://deinedomain.tld/image/webbild.png",
     "image": "https://deinedomain.tld/image/ich.png",
+    "description": "Professionelle Software-Entwicklung spezialisiert auf iOS Apps, Android Apps und moderne Websites",
+    "founder": {
+      "@type": "Person",
+      "name": "Oğuzhan Cirpan"
+    },
     "sameAs": []
   }
   </script>
-
-  <style>
-    /* === Grundlayout === */
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background-color: #121212;
-      color: white;
-      font-family: 'Inter', sans-serif;
-      overflow: hidden;
-      position: relative;
-    }
-
   
-    body::after {
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style/modern.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+  
+  <style>
+    /* Page-specific styles */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    }
+    
+    .hero::before {
       content: '';
       position: absolute;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 1;
-      z-index: -1;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+      animation: rotate 20s linear infinite;
     }
-
-    body::before {
-      background: linear-gradient(45deg, #FFD439, transparent);
-      bottom: -100px;
-      left: -100px;
-      width: 480px;
-      height: 480px;
-    }
-
-    body::after {
-      background: linear-gradient(225deg, #FFD439, transparent);
-      top: -100px;
-      right: -100px;
-      width: 300px;
-      height: 300px;
-    }
-
-    /* === Navigation === */
-    .navbar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 25px 50px;
-      box-sizing: border-box;
-      z-index: 20;
-      background: transparent;
-    }
-
-    /* === Logo === */
-    .logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .cyber-blue {
-      color: #00ffff;
-    }
-
-    .cursor-blink {
-      animation: blink 1s step-start infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-
-    .logo-symbols {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 6px;
-      position: relative;
-      top: -5px;
-    }
-
-    .logo-symbols span {
-      font-size: 2rem;
-      font-weight: 800;
-      line-height: 1;
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-    }
-
-    .logo-text .main {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: white;
-      letter-spacing: -0.05em;
-      margin-bottom: 2px;
-    }
-
-    .logo-text .sub {
-      font-size: 0.6rem;
-      color: #9ca3af;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      text-align: left;
-      margin-left: 0.25rem;
-      position: relative;
-      left: -5px;
-      top: 5px;
-    }
-
-    /* === Navigation rechts === */
-    .nav-links-container {
-      display: flex;
-      align-items: center;
-    }
-
     
-
-    .nav-link {
-      margin: 0 18px;
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: color 0.3s;
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
-
-    .nav-link:first-of-type {
-      color: #FDC03B;
-    }
-
-    .nav-link:hover {
-      color: #FDC03B;
-    }
-
-    /* === 🔥 Leuchtender Reach Out Button === */
-    .reach-out-button {
-      margin-left: 30px;
-      background-color: #FDC03B;
-      color: black;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+    
+    .hero-content {
       position: relative;
-      animation: glow 1.8s infinite alternate;
-      box-shadow: 0 0 15px rgba(253, 192, 59, 0.6);
-      transition: background-color 0.3s, box-shadow 0.3s;
+      z-index: 10;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: var(--space-2xl);
     }
-
-    .reach-out-button:hover {
-      background-color: #FFD700;
-      box-shadow: 0 0 25px rgba(253, 192, 59, 0.8);
+    
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900;
+      margin-bottom: var(--space-lg);
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-light) 50%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInUp 1s ease-out;
     }
-
-    @keyframes glow {
-      0% {
-        box-shadow: 0 0 10px rgba(253, 192, 59, 0.4),
-                    0 0 20px rgba(253, 192, 59, 0.3),
-                    0 0 30px rgba(253, 192, 59, 0.2);
-      }
-      50% {
-        box-shadow: 0 0 20px rgba(253, 192, 59, 0.8),
-                    0 0 30px rgba(253, 192, 59, 0.6),
-                    0 0 40px rgba(253, 192, 59, 0.4);
-      }
-      100% {
-        box-shadow: 0 0 10px rgba(253, 192, 59, 0.4),
-                    0 0 20px rgba(253, 192, 59, 0.3),
-                    0 0 30px rgba(253, 192, 59, 0.2);
-      }
+    
+    .hero-subtitle {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-2xl);
+      animation: fadeInUp 1s ease-out 0.2s both;
     }
-
-    .click-me-arrow {
-      position: absolute;
-      top: calc(-45px + 125px);
-      right: calc(0px + 40px);
-      color: #FDC03B;
-      font-size: 1rem;
-      font-weight: 600;
-      white-space: nowrap;
-      pointer-events: none;
-      transform: rotate(-20deg);
+    
+    .hero-cta {
+      display: flex;
+      gap: var(--space-lg);
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease-out 0.4s both;
     }
-
-    .click-me-arrow::before {
-      content: '↑';
-      display: block;
-      font-size: 2rem;
-      line-height: 0.8;
+    
+    .tech-stack {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-lg);
+      margin-top: var(--space-3xl);
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+    
+    .tech-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-lg);
+      background: var(--bg-secondary);
+      border: 1px solid var(--gray-800);
+      border-radius: var(--radius-full);
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all var(--transition-normal);
+    }
+    
+    .tech-item:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    .about-section {
+      background: var(--bg-secondary);
+      position: relative;
+    }
+    
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4xl);
+      align-items: center;
+    }
+    
+    .about-text h2 {
+      margin-bottom: var(--space-xl);
+    }
+    
+    .about-text p {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-lg);
+    }
+    
+    .about-image {
+      position: relative;
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+    
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-2xl);
+      margin-top: var(--space-4xl);
+    }
+    
+    .service-card {
       text-align: center;
-      margin-bottom: 5px;
+      padding: var(--space-2xl);
+      background: var(--bg-secondary);
+      border: 1px solid var(--gray-800);
+      border-radius: var(--radius-xl);
+      transition: all var(--transition-normal);
+      position: relative;
+      overflow: hidden;
     }
-
-    /* === Scrollbarer Bereich === */
-    .scroll-area {
+    
+    .service-card::before {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100vh;
-      overflow-y: auto;
-      
-      z-index: 5;
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 200px, black calc(100% - 100px), transparent 100%);
-      mask-image: linear-gradient(to bottom, transparent 70px, black 200px, black calc(100% - 100px), transparent 100%);
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+      transform: scaleX(0);
+      transition: transform var(--transition-normal);
     }
-
-    .section {
-      height: 100vh;
+    
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .service-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto var(--space-lg);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      border-radius: var(--radius-xl);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      scroll-snap-align: start;
-      padding: 20px;
+      font-size: 2rem;
     }
-
-    .headline {
+    
+    .service-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-md);
+      color: var(--text-primary);
+    }
+    
+    .service-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    
+    .stats-section {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+      text-align: center;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-2xl);
+      margin-top: var(--space-4xl);
+    }
+    
+    .stat-item {
+      padding: var(--space-xl);
+    }
+    
+    .stat-number {
       font-size: 3rem;
       font-weight: 900;
-      color: #FDC03B;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+      margin-bottom: var(--space-sm);
+      display: block;
     }
-
-    .subtitle {
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.9);
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      margin-bottom: 5px;
-    }
-
-    .tagline {
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.8);
-      letter-spacing: 0.15em;
-      max-width: 600px;
-    }
-
-    /* === Kontaktbutton mit Glow === */
-    .contact-btn {
-      margin-top: 20px;
-      background-color: #FDC03B;
-      color: black;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      animation: glow 1.8s infinite alternate;
-      box-shadow: 0 0 15px rgba(253, 192, 59, 0.6);
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-
-    .contact-btn:hover {
-      background-color: #FFD700;
-      box-shadow: 0 0 25px rgba(253, 192, 59, 0.8);
-    }
-
-    /* === Bild links unten === */
-    .portrait {
-      position: absolute;
-      bottom: -40px;
-      left: 20px;
-      width: 300px;
-      height: auto;
-      border-radius: 10px;
-      z-index: 4;
-    }
-
-.about-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;   /* rechtsbündig horizontal für Inhalte */
-  justify-content: center; /* vertikal zentriert */
-  text-align: left;       /* Text linksbündig */
-  max-width: 700px;
-  padding: 0 50px;         /* Abstand vom rechten Rand */
-  height: 100vh;           /* gleiche Höhe wie Section 1 & 3 */
-  margin-left: auto;        /* schiebt die Box nach rechts */
-}
-
-/* Überschrift linksbündig */
-.about-container h2 {
-  align-self: flex-start;  /* Überschrift links anordnen */
-  text-align: left;        /* Text linksbündig */
-  margin-bottom: 15px;
-}
-
-
-    .about-container h2 {
-      font-size: 2.8rem;
-      font-weight: 900;
-      color: #FDC03B;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
-
-    .about-container p {
-      font-size: 1.15rem;
-      color: rgba(255, 255, 255, 0.85);
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
-    .skills {
-      margin-top: 25px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skill {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #FDC03B;
-      letter-spacing: 0.05em;
-    }
-
     
+    .stat-label {
+      font-size: 1.125rem;
+      opacity: 0.9;
+    }
+    
+    .cta-section {
+      background: var(--bg-primary);
+      text-align: center;
+    }
+    
+    .cta-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    
+    .floating-element {
+      position: absolute;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      opacity: 0.1;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .floating-element:nth-child(1) {
+      width: 100px;
+      height: 100px;
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    .floating-element:nth-child(2) {
+      width: 150px;
+      height: 150px;
+      top: 60%;
+      right: 20%;
+      animation-delay: 2s;
+    }
+    
+    .floating-element:nth-child(3) {
+      width: 80px;
+      height: 80px;
+      bottom: 30%;
+      left: 15%;
+      animation-delay: 4s;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hero-cta {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .hero-cta .btn {
+        width: 100%;
+        max-width: 280px;
+      }
+      
+      .tech-stack {
+        justify-content: center;
+      }
+      
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+        text-align: center;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-lg);
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .navbar-container {
+        padding: var(--space-md) 0;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero-content {
+        padding: var(--space-lg);
+      }
+      
+      .tech-stack {
+        gap: var(--space-sm);
+      }
+      
+      .tech-item {
+        font-size: 0.75rem;
+        padding: var(--space-xs) var(--space-md);
+      }
+    }
   </style>
 </head>
-
-<body class="home">
+<body>
   <!-- Navigation -->
-<header class="navbar">
-  <a href="#home" class="logo">
-    <div class="logo-symbols">
-      <span class="cyber-blue">{</span>
-      <span class="text-white" style="margin: 0 6px;">C</span>
-      <span class="cyber-blue cursor-blink">}</span>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-container">
+        <a href="#home" class="navbar-brand">
+          <span style="color: var(--primary);">{</span>
+          <span>CIRPAN</span>
+          <span style="color: var(--primary); animation: blink 1s infinite;">}</span>
+        </a>
+        
+        <ul class="navbar-nav">
+          <li><a href="#home" class="nav-link active">Start</a></li>
+          <li><a href="#about" class="nav-link">Über mich</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="project.html" class="nav-link">Projekte</a></li>
+          <li><a href="reachOut.html" class="nav-link">Kontakt</a></li>
+        </ul>
+        
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
-    <div class="logo-text">
-      <span class="main">IRPAN</span>
-      <span class="sub">Software Development</span>
-    </div>
-  </a>
-
-  <!-- Hamburger Button (nur sichtbar auf kleinen Screens) -->
-  <div class="hamburger" onclick="toggleMenu()">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-  </div>
-
-  <nav class="nav-links-container">
-  <a href="#home" class="nav-link">STARTSEITE</a>
-  <a href="#about" class="nav-link">ÜBER MICH</a>
-  <a href="project.html" class="nav-link">PROJEKTE</a>
-    <button class="reach-out-button" onclick="window.location.href='reachOut.html'">
-      REACH OUT
-      <span class="click-me-arrow">click me</span>
-    </button>
   </nav>
-</header>
-
-
-  <!-- Scrollbarer Bereich -->
-  <div class="scroll-area">
-
-      <!-- Gelbe Blur-Flecken in scroll-area -->
-  <div class="blur-circle before"></div>
-  <div class="blur-circle after"></div>
-
-
-    <!-- Section 1 -->
-    <section id="home" class="section">
-      <p class="subtitle">HI, ICH BIN OGUZHAN</p>
-      <h3 class="headline">ICH ERSTELLE DIE <br> PERFEKTEN WEBSITES <br> UND APPS</h3>
-      <p class="tagline">FÜR DEIN UNTERNEHMEN!</p>
-  <!-- portrait shown only on home + mobile via responsive.css -->
-  <img src="image/ich.png" alt="Oğuzhan Cirpan — CIRPAN Software Development" class="portrait" />
-    </section>
-
-    <!-- Section 2 (About) -->
-    <section id="about" class="section">
-    <div class="about-container">
-    <h2>Über mich</h2>
-    <p>Hallo, ich bin <strong>Oğuzhan Cirpan</strong> – leidenschaftlicher App- und Webentwickler aus Österreich.  
-      Ich spezialisiere mich auf moderne Softwarelösungen mit klarem Design, effizientem Code und einem Fokus auf Benutzerfreundlichkeit.</p>
-
-    <p>Ich entwickle native Apps mit <strong>Swift (iOS)</strong> und <strong>Kotlin Multiplatform (Android)</strong>  
-      sowie Websites mit <strong>HTML, CSS und JavaScript</strong>.  
-      Mein Ziel ist es, funktionale und ästhetische digitale Produkte zu schaffen,  
-      die sowohl technisch als auch visuell überzeugen.</p>
-
-    <div class="skills">
-      <span class="skill">SwiftUI</span>
-      <span class="skill">Kotlin</span>
-       <span class="skill">Kotlin Multiplatform (KMP)</span>
-      <span class="skill">Firebase</span>
-      <span class="skill">HTML</span>
-      <span class="skill">CSS</span>
-      <span class="skill">JavaScript</span>
-      <span class="skill">Clean Architecture</span>
-      <span class="skill">MVVM</span>
-      <span class="skill">UI/UX Design</span>
+  
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobile-nav">
+    <div class="mobile-nav-content">
+      <a href="#home" class="nav-link">Start</a>
+      <a href="#about" class="nav-link">Über mich</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="project.html" class="nav-link">Projekte</a>
+      <a href="reachOut.html" class="nav-link">Kontakt</a>
     </div>
   </div>
-  </section>
-
-    <!-- Section 3 -->
-    <section class="section text-center">
-      <h3 class="headline">Let's Work Together</h3>
-      <p class="tagline">
-        Ich entwickle <strong>native iOS- und Android-Apps</strong>, 
-        <strong>plattformübergreifende Anwendungen</strong> mit Kotlin Multiplatform (KMP)
-        sowie moderne <strong>Websites</strong> mit HTML, CSS und JavaScript.
-        <br><br>
-        Wenn du ein Projekt hast oder Unterstützung brauchst, melde dich gerne!
+  
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="floating-elements">
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+    </div>
+    
+    <div class="hero-content">
+      <h1 class="hero-title">Moderne Software-Entwicklung</h1>
+      <p class="hero-subtitle">
+        Ich entwickle professionelle iOS Apps, Android Apps und responsive Websites 
+        mit modernsten Technologien und ansprechendem Design.
       </p>
-      <a href="reachOut.html">
-        <button class="contact-btn">Kontakt aufnehmen</button>
-      </a>
-    </section>
-
-
-  <!-- portrait moved into #home section (home-only, mobile-only) -->
-
-<!-- Footer (außerhalb von scroll-area) -->
-<footer id="footer-placeholder" style="width: 100%;"></footer>
-
-<style>
-
-    .scroll-area {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow-y: auto;
-  }
-
-  /* Blur-Flecken jetzt relativ zur scroll-area */
-  .blur-circle {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    z-index: -1;
-  }
-
-  .blur-circle.before {
-    width: 480px;
-    height: 480px;
-    bottom: -100px;
-    left: -100px;
-    background: linear-gradient(45deg, #FFD439, transparent);
-  }
-
-
+      
+      <div class="hero-cta">
+        <a href="reachOut.html" class="btn btn-primary btn-lg">Projekt starten</a>
+        <a href="project.html" class="btn btn-outline btn-lg">Meine Arbeit ansehen</a>
+      </div>
+      
+      <div class="tech-stack">
+        <span class="tech-item">🍎 Swift</span>
+        <span class="tech-item">🤖 Kotlin</span>
+        <span class="tech-item">🌐 JavaScript</span>
+        <span class="tech-item">⚛️ React</span>
+        <span class="tech-item">🔥 Firebase</span>
+      </div>
+    </div>
+  </section>
   
-  /* Footer-Styling */
-  footer {
-    background-color: #121212; /* gleiche Farbe wie Body */
-    color: white;
-    width: 100%;
-    height: 260px;
-    display: flex;
-    align-items: center; /* gleiche Höhe horizontal */
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-  }
-
-  footer a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-  }
-
-  footer a:hover {
-    color: #FDC03B;
-  }
-</style>
-
-<!-- Footer laden -->
-<!-- Load DOMPurify then mobile-nav and centralized footer loader -->
-<script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
-<script src="js/mobile-nav.js"></script>
-<script src="js/cookie-consent.js"></script>
-<script src="js/index.js"></script>
-
+  <!-- About Section -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text animate-slide-in-left">
+          <h2>Hallo, ich bin Oğuzhan</h2>
+          <p>
+            Als leidenschaftlicher Software-Entwickler aus Österreich bringe ich moderne 
+            Technologien und kreatives Design zusammen, um außergewöhnliche digitale 
+            Erlebnisse zu schaffen.
+          </p>
+          <p>
+            Mit über einem Jahr Erfahrung in der Entwicklung von iOS Apps mit Swift, 
+            Android Apps mit Kotlin und modernen Websites mit JavaScript und React 
+            helfe ich Unternehmen dabei, ihre Vision digital umzusetzen.
+          </p>
+          <p>
+            Mein Fokus liegt auf sauberer Architektur, benutzerfreundlichem Design 
+            und performanter Umsetzung. Jedes Projekt wird mit Aufmerksamkeit fürs 
+            Detail und modernsten Best Practices realisiert.
+          </p>
+          
+          <div class="flex gap-md" style="margin-top: var(--space-xl);">
+            <a href="reachOut.html" class="btn btn-primary">Zusammenarbeiten</a>
+            <a href="project.html" class="btn btn-ghost">Portfolio ansehen</a>
+          </div>
+        </div>
+        
+        <div class="about-image animate-slide-in-right">
+          <img src="image/ich.png" alt="Oğuzhan Cirpan - Software Developer" />
+        </div>
+      </div>
+    </div>
+  </section>
   
+  <!-- Services Section -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Meine Services</h2>
+        <p class="section-subtitle">
+          Von der Konzeption bis zur Umsetzung - ich begleite Ihr Projekt 
+          durch den gesamten Entwicklungsprozess.
+        </p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card animate-fade-in-up" style="--stagger: 1">
+          <div class="service-icon">📱</div>
+          <h3 class="service-title">iOS App Entwicklung</h3>
+          <p class="service-description">
+            Native iOS Apps mit Swift und SwiftUI. Optimiert für alle Apple Geräte 
+            mit modernem Design und flüssiger Performance.
+          </p>
+        </div>
+        
+        <div class="service-card animate-fade-in-up" style="--stagger: 2">
+          <div class="service-icon">🤖</div>
+          <h3 class="service-title">Android App Entwicklung</h3>
+          <p class="service-description">
+            Moderne Android Apps mit Kotlin und Jetpack Compose. 
+            Cross-Platform Lösungen mit Kotlin Multiplatform möglich.
+          </p>
+        </div>
+        
+        <div class="service-card animate-fade-in-up" style="--stagger: 3">
+          <div class="service-icon">🌐</div>
+          <h3 class="service-title">Web Entwicklung</h3>
+          <p class="service-description">
+            Responsive Websites und Web-Apps mit modernen Technologien. 
+            Von einfachen Landing Pages bis hin zu komplexen Anwendungen.
+          </p>
+        </div>
+        
+        <div class="service-card animate-fade-in-up" style="--stagger: 4">
+          <div class="service-icon">🎨</div>
+          <h3 class="service-title">UI/UX Design</h3>
+          <p class="service-description">
+            Benutzerfreundliche Interfaces mit modernem Design. 
+            Prototyping, Design Systems und User Experience Optimierung.
+          </p>
+        </div>
+        
+        <div class="service-card animate-fade-in-up" style="--stagger: 5">
+          <div class="service-icon">⚡</div>
+          <h3 class="service-title">Performance Optimierung</h3>
+          <p class="service-description">
+            Optimierung bestehender Anwendungen für bessere Performance, 
+            Ladezeiten und Benutzerfreundlichkeit.
+          </p>
+        </div>
+        
+        <div class="service-card animate-fade-in-up" style="--stagger: 6">
+          <div class="service-icon">🔧</div>
+          <h3 class="service-title">Beratung & Support</h3>
+          <p class="service-description">
+            Technische Beratung, Code Reviews und langfristiger Support 
+            für Ihre Softwareprojekte.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Stats Section -->
+  <section class="section stats-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Zahlen & Fakten</h2>
+      </div>
+      
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number" data-count="20">0</span>
+          <span class="stat-label">Projekte abgeschlossen</span>
+        </div>
+        
+        <div class="stat-item">
+          <span class="stat-number" data-count="2">0</span>
+          <span class="stat-label">Jahre Erfahrung</span>
+        </div>
+        
+        <div class="stat-item">
+          <span class="stat-number" data-count="100">0</span>
+          <span class="stat-label">% Kundenzufriedenheit</span>
+        </div>
+        
+        <div class="stat-item">
+          <span class="stat-number" data-count="24">0</span>
+          <span class="stat-label">Stunden Support</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section id="contact" class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Bereit für Ihr nächstes Projekt?</h2>
+        <p class="text-lg text-secondary mb-2xl">
+          Lassen Sie uns gemeinsam Ihre Idee in eine erfolgreiche 
+          digitale Lösung verwandeln. Ich freue mich auf Ihre Nachricht!
+        </p>
+        
+        <div class="flex gap-lg justify-center">
+          <a href="mailto:info.cirpan@gmail.com" class="btn btn-primary btn-lg">
+            📧 E-Mail schreiben
+          </a>
+          <a href="reachOut.html" class="btn btn-accent btn-lg">
+            📝 Kontaktformular
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="section-sm bg-secondary">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-xl">
+        <div class="col-span-2">
+          <div class="navbar-brand mb-lg">
+            <span style="color: var(--primary);">{</span>
+            <span>CIRPAN</span>
+            <span style="color: var(--primary);">}</span>
+          </div>
+          <p class="text-muted mb-lg">
+            Professionelle Software-Entwicklung mit modernsten Technologien 
+            und ansprechendem Design.
+          </p>
+          <p class="text-sm text-muted">
+            © 2025 CIRPAN Software Development. Alle Rechte vorbehalten.
+          </p>
+        </div>
+        
+        <div>
+          <h4 class="mb-lg">Services</h4>
+          <ul class="space-y-sm">
+            <li><a href="#services" class="text-muted hover:text-primary transition">iOS Entwicklung</a></li>
+            <li><a href="#services" class="text-muted hover:text-primary transition">Android Entwicklung</a></li>
+            <li><a href="#services" class="text-muted hover:text-primary transition">Web Entwicklung</a></li>
+            <li><a href="#services" class="text-muted hover:text-primary transition">UI/UX Design</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="mb-lg">Legal</h4>
+          <ul class="space-y-sm">
+            <li><a href="impressum.html" class="text-muted hover:text-primary transition">Impressum</a></li>
+            <li><a href="datenschutz.html" class="text-muted hover:text-primary transition">Datenschutz</a></li>
+            <li><a href="cookies.html" class="text-muted hover:text-primary transition">Cookie-Richtlinie</a></li>
+            <li><a href="agb.html" class="text-muted hover:text-primary transition">AGB</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script src="js/cookie-consent.js"></script>
+  <script src="js/modern.js"></script>
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
+    });
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.style.display = 'none';
+      });
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Update active navigation link on scroll
+    function updateActiveNavLink() {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+    
+    window.addEventListener('scroll', updateActiveNavLink);
+    
+    // Animate counter numbers
+    function animateCounters() {
+      const counters = document.querySelectorAll('[data-count]');
+      
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-count'));
+        const duration = 2000; // 2 seconds
+        const increment = target / (duration / 16); // 60fps
+        let current = 0;
+        
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          counter.textContent = Math.floor(current);
+        }, 16);
+      });
+    }
+    
+    // Trigger counter animation when stats section is visible
+    const statsSection = document.querySelector('.stats-section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+    
+    if (statsSection) {
+      observer.observe(statsSection);
+    }
+    
+    // Add scroll-based animations
+    const animateElements = document.querySelectorAll('.animate-fade-in-up, .animate-slide-in-left, .animate-slide-in-right');
+    
+    const animationObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    animateElements.forEach(el => {
+      el.style.animationPlayState = 'paused';
+      animationObserver.observe(el);
+    });
+    
+    // Navbar background on scroll
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(15, 15, 35, 0.95)';
+      } else {
+        navbar.style.background = 'rgba(15, 15, 35, 0.8)';
+      }
+    });
+  </script>
 </body>
 </html>

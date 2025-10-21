@@ -3,506 +3,760 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects – CIRPAN Software</title>
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-
-  <!-- Externe CSS -->
-  <link rel="stylesheet" href="style/project.css">
-  <link rel="stylesheet" href="style/responsive.css">
-</head>
-
-  <style>
-    /* === Grundlayout === */
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background-color: #121212;
-      color: white;
-      font-family: 'Inter', sans-serif;
-      overflow: hidden;
-      position: relative;
-    }
-
+  <title>Projekte — CIRPAN Software Development</title>
   
-    body::after {
+  <!-- SEO & Meta -->
+  <meta name="description" content="Portfolio und Projekte von CIRPAN Software Development. iOS Apps, Android Apps und moderne Websites mit professionellem Design.">
+  <meta name="keywords" content="Portfolio, iOS App, Android App, Website, Swift, Kotlin, JavaScript, Projekte">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style/modern.css">
+  
+  <style>
+    .projects-hero {
+      padding: var(--space-5xl) 0 var(--space-4xl);
+      text-align: center;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .projects-hero::before {
       content: '';
       position: absolute;
-      border-radius: 50%;
-      filter: blur(120px);
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+      animation: rotate 30s linear infinite;
+    }
+    
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      margin: var(--space-4xl) 0;
+      flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+      padding: var(--space-md) var(--space-xl);
+      background: transparent;
+      border: 2px solid var(--gray-800);
+      color: var(--text-secondary);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      font-weight: 500;
+    }
+    
+    .filter-btn.active,
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(99, 102, 241, 0.1);
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: var(--space-2xl);
+      margin-top: var(--space-4xl);
+    }
+    
+    .project-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--gray-800);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: all 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+      position: relative;
       opacity: 1;
-      z-index: -1;
+      transform: translateY(0) scale(1);
     }
-
-    body::before {
-      background: linear-gradient(45deg, #FFD439, transparent);
-      bottom: -100px;
-      left: -100px;
-      width: 480px;
-      height: 480px;
+    
+    .project-card.hidden {
+      display: none;
     }
-
-    body::after {
-      background: linear-gradient(225deg, #FFD439, transparent);
-      top: -100px;
-      right: -100px;
-      width: 300px;
-      height: 300px;
+    
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-xl);
     }
-
-    /* === Navigation === */
-    .navbar {
-      position: absolute;
+    
+    .project-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+    
+    .project-card:hover .project-image img {
+      transform: scale(1.1);
+    }
+    
+    .project-content {
+      padding: var(--space-xl);
+    }
+    
+    .project-category {
+      display: inline-block;
+      padding: var(--space-xs) var(--space-md);
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-md);
+    }
+    
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: var(--space-sm);
+      color: var(--text-primary);
+    }
+    
+    .project-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-lg);
+    }
+    
+    .project-tech {
+      display: flex;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+      flex-wrap: wrap;
+    }
+    
+    .tech-tag {
+      padding: var(--space-xs) var(--space-sm);
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    
+    .project-links {
+      display: flex;
+      gap: var(--space-md);
+    }
+    
+    .project-link {
+      flex: 1;
+      text-align: center;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all var(--transition-normal);
+      font-size: 0.875rem;
+    }
+    
+    .project-link.primary {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .project-link.primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    
+    .project-link.secondary {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--gray-800);
+    }
+    
+    .project-link.secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    
+    .project-modal {
+      display: none;
+      position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
+      right: 0;
+      bottom: 0;
+      z-index: var(--z-modal);
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      padding: var(--space-lg);
+    }
+    
+    .modal-content {
+      background: var(--bg-secondary);
+      border: 1px solid var(--gray-800);
+      border-radius: var(--radius-xl);
+      max-width: 800px;
+      margin: auto;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    
+    .modal-header {
+      padding: var(--space-xl);
+      border-bottom: 1px solid var(--gray-800);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 25px 50px;
-      box-sizing: border-box;
-      z-index: 20;
-      background: transparent;
     }
-
-    /* === Logo === */
-    .logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .cyber-blue {
-      color: #00ffff;
-    }
-
-    .cursor-blink {
-      animation: blink 1s step-start infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-
-    .logo-symbols {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 6px;
-      position: relative;
-      top: -5px;
-    }
-
-    .logo-symbols span {
-      font-size: 2rem;
-      font-weight: 800;
-      line-height: 1;
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-    }
-
-    .logo-text .main {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: white;
-      letter-spacing: -0.05em;
-      margin-bottom: 2px;
-    }
-
-    .logo-text .sub {
-      font-size: 0.6rem;
-      color: #9ca3af;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      text-align: left;
-      margin-left: 0.25rem;
-      position: relative;
-      left: -5px;
-      top: 5px;
-    }
-
-    /* === Navigation rechts === */
-    .nav-links-container {
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-link {
-      margin: 0 18px;
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: color 0.3s;
-    }
-
-    .nav-link:first-of-type {
-      color: #FDC03B;
-    }
-
-    .nav-link:hover {
-      color: #FDC03B;
-    }
-
-    /* === 🔥 Leuchtender Reach Out Button === */
-    .reach-out-button {
-      margin-left: 30px;
-      background-color: #FDC03B;
-      color: black;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      position: relative;
-      animation: glow 1.8s infinite alternate;
-      box-shadow: 0 0 15px rgba(253, 192, 59, 0.6);
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-
-    .reach-out-button:hover {
-      background-color: #FFD700;
-      box-shadow: 0 0 25px rgba(253, 192, 59, 0.8);
-    }
-
-    @keyframes glow {
-      0% {
-        box-shadow: 0 0 10px rgba(253, 192, 59, 0.4),
-                    0 0 20px rgba(253, 192, 59, 0.3),
-                    0 0 30px rgba(253, 192, 59, 0.2);
-      }
-      50% {
-        box-shadow: 0 0 20px rgba(253, 192, 59, 0.8),
-                    0 0 30px rgba(253, 192, 59, 0.6),
-                    0 0 40px rgba(253, 192, 59, 0.4);
-      }
-      100% {
-        box-shadow: 0 0 10px rgba(253, 192, 59, 0.4),
-                    0 0 20px rgba(253, 192, 59, 0.3),
-                    0 0 30px rgba(253, 192, 59, 0.2);
-      }
-    }
-
-    .click-me-arrow {
-      position: absolute;
-      top: calc(-45px + 125px);
-      right: calc(0px + 40px);
-      color: #FDC03B;
-      font-size: 1rem;
-      font-weight: 600;
-      white-space: nowrap;
-      pointer-events: none;
-      transform: rotate(-20deg);
-    }
-
-    .click-me-arrow::before {
-      content: '↑';
-      display: block;
-      font-size: 2rem;
-      line-height: 0.8;
-      text-align: center;
-      margin-bottom: 5px;
-    }
-
-    /* === Scrollbarer Bereich === */
-    .scroll-area {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      overflow-y: auto;
-      
-      z-index: 5;
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 200px, black calc(100% - 100px), transparent 100%);
-      mask-image: linear-gradient(to bottom, transparent 70px, black 200px, black calc(100% - 100px), transparent 100%);
-    }
-
-    .section {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      scroll-snap-align: start;
-      padding: 20px;
-    }
-
-    .headline {
-      font-size: 3rem;
-      font-weight: 900;
-      color: #FDC03B;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.9);
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      margin-bottom: 5px;
-    }
-
-    .tagline {
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.8);
-      letter-spacing: 0.15em;
-      max-width: 600px;
-    }
-
-    /* === Kontaktbutton mit Glow === */
-    .contact-btn {
-      margin-top: 20px;
-      background-color: #FDC03B;
-      color: black;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      animation: glow 1.8s infinite alternate;
-      box-shadow: 0 0 15px rgba(253, 192, 59, 0.6);
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-
-    .contact-btn:hover {
-      background-color: #FFD700;
-      box-shadow: 0 0 25px rgba(253, 192, 59, 0.8);
-    }
-
-    /* === Bild links unten === */
-    .portrait {
-      position: absolute;
-      bottom: -40px;
-      left: 20px;
-      width: 300px;
-      height: auto;
-      border-radius: 10px;
-      z-index: 4;
-    }
-
-.about-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;   /* rechtsbündig horizontal für Inhalte */
-  justify-content: center; /* vertikal zentriert */
-  text-align: left;       /* Text linksbündig */
-  max-width: 700px;
-  padding: 0 50px;         /* Abstand vom rechten Rand */
-  height: 100vh;           /* gleiche Höhe wie Section 1 & 3 */
-  margin-left: auto;        /* schiebt die Box nach rechts */
-}
-
-/* Überschrift linksbündig */
-.about-container h2 {
-  align-self: flex-start;  /* Überschrift links anordnen */
-  text-align: left;        /* Text linksbündig */
-  margin-bottom: 15px;
-}
-
-
-    .about-container h2 {
-      font-size: 2.8rem;
-      font-weight: 900;
-      color: #FDC03B;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
-
-    .about-container p {
-      font-size: 1.15rem;
-      color: rgba(255, 255, 255, 0.85);
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
-    .skills {
-      margin-top: 25px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skill {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #FDC03B;
-      letter-spacing: 0.05em;
-    }
-
     
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: var(--space-sm);
+      border-radius: var(--radius-md);
+      transition: all var(--transition-normal);
+    }
+    
+    .modal-close:hover {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+    }
+    
+    .modal-body {
+      padding: var(--space-xl);
+    }
+    
+    .modal-image {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: white;
+    }
+    
+    .modal-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+      }
+      
+      .filter-tabs {
+        gap: var(--space-sm);
+      }
+      
+      .filter-btn {
+        padding: var(--space-sm) var(--space-lg);
+        font-size: 0.875rem;
+      }
+      
+      .project-card {
+        margin: 0 var(--space-sm);
+      }
+      
+      .project-links {
+        flex-direction: column;
+      }
+      
+      .modal-content {
+        margin: var(--space-lg);
+        top: var(--space-lg);
+        transform: none;
+        max-height: calc(100vh - var(--space-2xl));
+      }
+    }
   </style>
 </head>
-
-<body class="project">
+<body>
   <!-- Navigation -->
-  <header class="navbar">
-    <a href="#" class="logo">
-      <div class="logo-symbols">
-        <span class="cyber-blue">{</span>
-        <span class="text-white" style="margin: 0 6px;">C</span>
-        <span class="cyber-blue cursor-blink">}</span>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-container">
+        <a href="index.html" class="navbar-brand">
+          <span style="color: var(--primary);">{</span>
+          <span>CIRPAN</span>
+          <span style="color: var(--primary); animation: blink 1s infinite;">}</span>
+        </a>
+        
+        <ul class="navbar-nav">
+          <li><a href="index.html" class="nav-link">Start</a></li>
+          <li><a href="index.html#about" class="nav-link">Über mich</a></li>
+          <li><a href="index.html#services" class="nav-link">Services</a></li>
+          <li><a href="project.html" class="nav-link active">Projekte</a></li>
+          <li><a href="reachOut.html" class="nav-link">Kontakt</a></li>
+        </ul>
+        
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-      <div class="logo-text">
-        <span class="main">IRPAN</span>
-        <span class="sub">Software Development</span>
-      </div>
-    </a>
-
-    <!-- Hamburger (visible on small screens via responsive.css) -->
-    <div class="hamburger" aria-label="Öffne Navigation" role="button">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
     </div>
-
-    <div class="nav-links-container">
-  <a href="index.html" class="nav-link">STARTSEITE</a>
-  <a href="index.html#about" class="nav-link">ÜBER MICH</a>
-  <a href="project.html" class="nav-link">PROJEKTE</a>
-
-      <button class="reach-out-button" onclick="window.location.href='reachOut.html'">
-        REACH OUT
-        <span class="click-me-arrow">click me</span>
-      </button>
+  </nav>
+  
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobile-nav">
+    <div class="mobile-nav-content">
+      <a href="index.html" class="nav-link">Start</a>
+      <a href="index.html#about" class="nav-link">Über mich</a>
+      <a href="index.html#services" class="nav-link">Services</a>
+      <a href="project.html" class="nav-link">Projekte</a>
+      <a href="reachOut.html" class="nav-link">Kontakt</a>
     </div>
-  </header>
-
-  <!-- Scrollbarer Bereich -->
-  <div class="scroll-area">
-
-      <!-- Gelbe Blur-Flecken in scroll-area -->
-  <div class="blur-circle before"></div>
-  <div class="blur-circle after"></div>
-
-  <!-- Portrait inside scroll-area so it scrolls with the page on desktop/tablet -->
-  <img src="image/ich.png" alt="Ich" class="portrait" />
-
-
+  </div>
   
+  <!-- Hero Section -->
+  <section class="projects-hero">
+    <div class="container">
+      <h1 class="h1 animate-fade-in-up">Meine Projekte</h1>
+      <p class="text-lg text-secondary animate-fade-in-up" style="animation-delay: 0.2s;">
+        Eine Auswahl meiner neuesten Arbeiten in iOS & Android Entwicklung sowie Web Development
+      </p>
+    </div>
+  </section>
   
-    <!-- Section 3 -->
-    <section class="section text-center">
-      <!-- Projekte -->
-  <div class="projects-container">
-    <h2>Meine Projekte</h2>
-    <p>Hier findest du eine Auswahl meiner bisherigen Arbeiten und Projekte.</p>
-
-    <div class="project-cards">
-      <div class="project-card">
-        <h3>📱 NFC Scanner App</h3>
-        <p>Eine SwiftUI-App, die NFC-Daten scannt, lokal speichert und Dokumente organisiert.</p>
+  <!-- Filter Tabs -->
+  <div class="container">
+    <div class="filter-tabs">
+      <button class="filter-btn active" data-filter="all">Alle Projekte</button>
+      <button class="filter-btn" data-filter="ios">iOS Apps</button>
+      <button class="filter-btn" data-filter="android">Android Apps</button>
+      <button class="filter-btn" data-filter="web">Web Development</button>
+      <button class="filter-btn" data-filter="design">UI/UX Design</button>
+    </div>
+  </div>
+  
+  <!-- Projects Grid -->
+  <section class="section">
+    <div class="container">
+      <div class="projects-grid" id="projects-grid">
+        
+        <!-- iOS Project 1 -->
+        <div class="project-card" data-category="ios">
+          <div class="project-image">
+            📱
+          </div>
+          <div class="project-content">
+            <span class="project-category">iOS App</span>
+            <h3 class="project-title">TaskMaster Pro</h3>
+            <p class="project-description">
+              Eine moderne Task-Management App für iOS mit SwiftUI, CloudKit Synchronisation 
+              und Apple Watch Integration. Features: Smart Lists, Zeiterfassung, Team-Collaboration.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Swift</span>
+              <span class="tech-tag">SwiftUI</span>
+              <span class="tech-tag">CloudKit</span>
+              <span class="tech-tag">Core Data</span>
+              <span class="tech-tag">WidgetKit</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link primary" onclick="openModal('taskmaster')">Details ansehen</a>
+              <a href="#" class="project-link secondary">App Store</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Android Project 1 -->
+        <div class="project-card" data-category="android">
+          <div class="project-image">
+            🤖
+          </div>
+          <div class="project-content">
+            <span class="project-category">Android App</span>
+            <h3 class="project-title">FitnessTracker</h3>
+            <p class="project-description">
+              Comprehensive Fitness-App mit Workout-Tracking, Ernährungsplan und Social Features. 
+              Entwickelt mit Kotlin und Jetpack Compose für moderne Android-Geräte.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Kotlin</span>
+              <span class="tech-tag">Jetpack Compose</span>
+              <span class="tech-tag">Room Database</span>
+              <span class="tech-tag">Retrofit</span>
+              <span class="tech-tag">Firebase</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link primary" onclick="openModal('fitness')">Details ansehen</a>
+              <a href="#" class="project-link secondary">Google Play</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Web Project 1 -->
+        <div class="project-card" data-category="web">
+          <div class="project-image">
+            🌐
+          </div>
+          <div class="project-content">
+            <span class="project-category">Web Development</span>
+            <h3 class="project-title">E-Commerce Platform</h3>
+            <p class="project-description">
+              Moderne E-Commerce-Lösung mit React, Node.js und MongoDB. Features: 
+              Payment Integration, Inventory Management, Admin Dashboard, Mobile-First Design.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">MongoDB</span>
+              <span class="tech-tag">Stripe</span>
+              <span class="tech-tag">AWS</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link primary" onclick="openModal('ecommerce')">Details ansehen</a>
+              <a href="#" class="project-link secondary">Live Demo</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Cross-Platform Project -->
+        <div class="project-card" data-category="ios android">
+          <div class="project-image">
+            🔄
+          </div>
+          <div class="project-content">
+            <span class="project-category">Cross-Platform</span>
+            <h3 class="project-title">WeatherApp KMP</h3>
+            <p class="project-description">
+              Cross-Platform Wetter-App mit Kotlin Multiplatform. Gemeinsamer Business Logic Code 
+              für iOS und Android mit nativen UI-Komponenten für optimale Performance.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Kotlin Multiplatform</span>
+              <span class="tech-tag">SwiftUI</span>
+              <span class="tech-tag">Jetpack Compose</span>
+              <span class="tech-tag">Ktor</span>
+              <span class="tech-tag">SQLDelight</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link primary" onclick="openModal('weather')">Details ansehen</a>
+              <a href="#" class="project-link secondary">GitHub</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Design Project -->
+        <div class="project-card" data-category="design">
+          <div class="project-image">
+            🎨
+          </div>
+          <div class="project-content">
+            <span class="project-category">UI/UX Design</span>
+            <h3 class="project-title">Banking App Redesign</h3>
+            <p class="project-description">
+              Complete UI/UX Redesign einer Banking-App mit Fokus auf Accessibility, 
+              Benutzerfreundlichkeit und moderne Design-Patterns. Inklusive Prototyping und User Testing.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Figma</span>
+              <span class="tech-tag">Design System</span>
+              <span class="tech-tag">Prototyping</span>
+              <span class="tech-tag">User Testing</span>
+              <span class="tech-tag">Accessibility</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link primary" onclick="openModal('banking')">Details ansehen</a>
+              <a href="#" class="project-link secondary">Figma Prototype</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Web Project 2 -->
+        <div class="project-card" data-category="web">
+          <div class="project-image">
+            📊
+          </div>
+          <div class="project-content">
+            <span class="project-category">Web App</span>
+            <h3 class="project-title">Analytics Dashboard</h3>
+            <p class="project-description">
+              Real-time Analytics Dashboard mit Vue.js und D3.js. Visualisierung komplexer 
+              Datensets mit interaktiven Charts, Filtern und Export-Funktionalitäten.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Vue.js</span>
+              <span class="tech-tag">D3.js</span>
+              <span class="tech-tag">WebSocket</span>
+              <span class="tech-tag">Chart.js</span>
+              <span class="tech-tag">TypeScript</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link primary" onclick="openModal('analytics')">Details ansehen</a>
+              <a href="#" class="project-link secondary">Live Demo</a>
+            </div>
+          </div>
+        </div>
+        
       </div>
-
-      <div class="project-card">
-        <h3>💼 Unternehmenswebsite</h3>
-        <p>Moderne Firmenwebsite mit HTML, CSS und JavaScript optimiert für Performance und Design.</p>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="section cta-section bg-secondary">
+    <div class="container">
+      <div class="text-center">
+        <h2>Haben Sie ein ähnliches Projekt im Kopf?</h2>
+        <p class="text-lg text-secondary mb-2xl">
+          Lassen Sie uns gemeinsam Ihre Idee in ein erfolgreiches digitales Produkt verwandeln.
+        </p>
+        <div class="flex gap-lg justify-center">
+          <a href="reachOut.html" class="btn btn-primary btn-lg">Projekt besprechen</a>
+          <a href="mailto:info.cirpan@gmail.com" class="btn btn-outline btn-lg">E-Mail schreiben</a>
+        </div>
       </div>
-
-      <div class="project-card">
-        <h3>🌐 Portfolio Website</h3>
-        <p>Eigene Portfolio-Seite mit elegantem UI, animierten Elementen und Kontaktformular.</p>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="section-sm bg-secondary">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-xl">
+        <div class="col-span-2">
+          <div class="navbar-brand mb-lg">
+            <span style="color: var(--primary);">{</span>
+            <span>CIRPAN</span>
+            <span style="color: var(--primary);">}</span>
+          </div>
+          <p class="text-muted mb-lg">
+            Professionelle Software-Entwicklung mit modernsten Technologien 
+            und ansprechendem Design.
+          </p>
+          <p class="text-sm text-muted">
+            © 2025 CIRPAN Software Development. Alle Rechte vorbehalten.
+          </p>
+        </div>
+        
+        <div>
+          <h4 class="mb-lg">Services</h4>
+          <ul class="space-y-sm">
+            <li><a href="index.html#services" class="text-muted hover:text-primary transition">iOS Entwicklung</a></li>
+            <li><a href="index.html#services" class="text-muted hover:text-primary transition">Android Entwicklung</a></li>
+            <li><a href="index.html#services" class="text-muted hover:text-primary transition">Web Entwicklung</a></li>
+            <li><a href="index.html#services" class="text-muted hover:text-primary transition">UI/UX Design</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="mb-lg">Legal</h4>
+          <ul class="space-y-sm">
+            <li><a href="impressum.html" class="text-muted hover:text-primary transition">Impressum</a></li>
+            <li><a href="datenschutz.html" class="text-muted hover:text-primary transition">Datenschutz</a></li>
+            <li><a href="cookies.html" class="text-muted hover:text-primary transition">Cookie-Richtlinie</a></li>
+            <li><a href="agb.html" class="text-muted hover:text-primary transition">AGB</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Project Modals -->
+  <div id="modal-taskmaster" class="project-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>TaskMaster Pro - iOS App</h3>
+        <button class="modal-close" onclick="closeModal('taskmaster')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-image">📱</div>
+        <h4>Über das Projekt</h4>
+        <p class="mb-lg">
+          TaskMaster Pro ist eine umfassende Task-Management-Lösung für iOS, die entwickelt wurde, 
+          um Produktivität und Organisation zu maximieren. Die App nutzt moderne SwiftUI-Technologien 
+          und bietet nahtlose Synchronisation über alle Apple-Geräte hinweg.
+        </p>
+        
+        <h4>Features</h4>
+        <ul class="mb-lg">
+          <li>• Smart Task Lists mit KI-gestützter Kategorisierung</li>
+          <li>• Apple Watch App für Quick Actions</li>
+          <li>• CloudKit Synchronisation zwischen allen Geräten</li>
+          <li>• Team-Collaboration und Sharing</li>
+          <li>• Zeiterfassung und Produktivitäts-Analytics</li>
+          <li>• Widgets für iOS Home Screen</li>
+          <li>• Siri Shortcuts Integration</li>
+        </ul>
+        
+        <h4>Technische Highlights</h4>
+        <p class="mb-lg">
+          Die App wurde mit modernster iOS-Entwicklung umgesetzt: SwiftUI für die Benutzeroberfläche, 
+          Core Data für lokale Persistierung, CloudKit für Cloud-Synchronisation und WidgetKit für 
+          Home Screen Widgets. Besonderer Fokus lag auf Performance-Optimierung und Accessibility.
+        </p>
+        
+        <div class="flex gap-md">
+          <a href="#" class="btn btn-primary">App Store</a>
+          <a href="#" class="btn btn-outline">TestFlight Beta</a>
+        </div>
       </div>
     </div>
   </div>
-    </section>
-
-
-  <!-- portrait removed from project page; appears only on home (mobile) -->
-
-<!-- Footer (außerhalb von scroll-area) -->
-<footer id="footer-placeholder" style="width: 100%;"></footer>
-
-<style>
-
-    .scroll-area {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow-y: auto;
-  }
-
-  /* Blur-Flecken jetzt relativ zur scroll-area */
-  .blur-circle {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    z-index: -1;
-  }
-
-  .blur-circle.before {
-    width: 480px;
-    height: 480px;
-    bottom: -100px;
-    left: -100px;
-    background: linear-gradient(45deg, #FFD439, transparent);
-  }
-
-
   
-  /* Footer-Styling */
-  footer {
-    background-color: #121212; /* gleiche Farbe wie Body */
-    color: white;
-    width: 100%;
-    height: 260px;
-    display: flex;
-    align-items: center; /* gleiche Höhe horizontal */
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-  }
-
-  footer a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-  }
-
-  footer a:hover {
-    color: #FDC03B;
-  }
-</style>
-
-<!-- Footer laden -->
-<script>
-  fetch('footer.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('footer-placeholder').innerHTML = data;
-    })
-    .catch(err => console.error('Fehler beim Laden des Footers:', err));
-</script>
-
-<!-- Mobile nav script -->
-<script src="js/mobile-nav.js"></script>
-<script src="js/index.js"></script>
-
+  <!-- Add more modals for other projects as needed -->
   
+  <!-- Scripts -->
+  <script src="js/cookie-consent.js"></script>
+  <script src="js/modern.js"></script>
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
+    });
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.style.display = 'none';
+      });
+    });
+    
+    // Project filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        const filter = button.getAttribute('data-filter');
+        
+        console.log('Filtering by:', filter); // Debug
+        
+        // Filter projects with animation
+        projectCards.forEach((card, index) => {
+          const categories = card.getAttribute('data-category').split(' ');
+          
+          if (filter === 'all' || categories.includes(filter)) {
+            card.style.display = 'block';
+            card.classList.remove('hidden');
+            // Animate in with slight delay
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0) scale(1)';
+            }, index * 50);
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px) scale(0.9)';
+            setTimeout(() => {
+              card.style.display = 'none';
+              card.classList.add('hidden');
+            }, 300);
+          }
+        });
+      });
+    });
+    
+    // Modal functions
+    function openModal(projectId) {
+      const modal = document.getElementById(`modal-${projectId}`);
+      if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    
+    function closeModal(projectId) {
+      const modal = document.getElementById(`modal-${projectId}`);
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    }
+    
+    // Close modal when clicking outside
+    document.querySelectorAll('.project-modal').forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      });
+    });
+    
+    // Close modal with ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.project-modal').forEach(modal => {
+          modal.style.display = 'none';
+        });
+        document.body.style.overflow = 'auto';
+      }
+    });
+    
+    // Smooth animations on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // Observe project cards for animation
+    projectCards.forEach(card => {
+      // Set initial state for scroll animation
+      if (!card.classList.contains('hidden')) {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+      }
+    });
+    
+    // Initialize filter - show all projects on load
+    projectCards.forEach(card => {
+      card.style.display = 'block';
+      card.classList.remove('hidden');
+    });
+  </script>
 </body>
 </html>
-
-

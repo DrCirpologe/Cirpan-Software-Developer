@@ -3,600 +3,366 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontakt – CIRPAN Software</title>
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-
-  <!-- Externe CSS -->
-  <link rel="stylesheet" href="style/contact.css">
-  <link rel="stylesheet" href="style/responsive.css">
-</head>
-
-<body class="reachout">
-
-  <!-- Navigation -->
-  <header class="navbar">
-    <a href="index.html" class="logo">
-      <div class="logo-symbols">
-        <span class="cyber-blue">{</span>
-        <span class="text-white" style="margin: 0 6px;">C</span>
-        <span class="cyber-blue cursor-blink">}</span>
-      </div>
-      <div class="logo-text">
-        <span class="main">IRPAN</span>
-        <span class="sub">Software Development</span>
-      </div>
-    </a>
-
-    <div class="nav-links-container">
-  <a href="index.html" class="nav-link">STARTSEITE</a>
-  <a href="index.html#about" class="nav-link">ÜBER MICH</a>
-  <a href="project.html" class="nav-link">PROJEKTE</a>
-
-      <button class="reach-out-button" id="reachOutBtn">
-        REACH OUT
-        <span class="click-me-arrow">click me</span>
-      </button>
-    </div>
-  </header>
-
-  <style>
-    /* === Grundlayout === */
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background-color: #121212;
-      color: white;
-      font-family: 'Inter', sans-serif;
-      overflow: hidden;
-      position: relative;
-    }
-
+  <title>Datenschutz — CIRPAN Software Development</title>
   
-    body::after {
+  <!-- SEO & Meta -->
+  <meta name="description" content="Datenschutzerklärung von CIRPAN Software Development. Informationen zum Schutz Ihrer persönlichen Daten.">
+  <meta name="keywords" content="Datenschutz, DSGVO, GDPR, CIRPAN, Software Development, Privatsphäre">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style/modern.css">
+  
+  <style>
+    .legal-hero {
+      padding: var(--space-5xl) 0 var(--space-4xl);
+      text-align: center;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .legal-hero::before {
       content: '';
       position: absolute;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 1;
-      z-index: -1;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+      animation: rotate 30s linear infinite;
     }
-
-    body::before {
-      background: linear-gradient(45deg, #FFD439, transparent);
-      bottom: -100px;
-      left: -100px;
-      width: 480px;
-      height: 480px;
-    }
-
-    body::after {
-      background: linear-gradient(225deg, #FFD439, transparent);
-      top: -100px;
-      right: -100px;
-      width: 300px;
-      height: 300px;
-    }
-
-    /* === Navigation === */
-    .navbar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 25px 50px;
-      box-sizing: border-box;
-      z-index: 20;
-      background: transparent;
-    }
-
-    /* === Logo === */
-    .logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .cyber-blue {
-      color: #00ffff;
-    }
-
-    .cursor-blink {
-      animation: blink 1s step-start infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-
-    .logo-symbols {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 6px;
-      position: relative;
-      top: -5px;
-    }
-
-    .logo-symbols span {
-      font-size: 2rem;
-      font-weight: 800;
-      line-height: 1;
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-    }
-
-    .logo-text .main {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: white;
-      letter-spacing: -0.05em;
-      margin-bottom: 2px;
-    }
-
-    .logo-text .sub {
-      font-size: 0.6rem;
-      color: #9ca3af;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      text-align: left;
-      margin-left: 0.25rem;
-      position: relative;
-      left: -5px;
-      top: 5px;
-    }
-
-    /* === Navigation rechts === */
-    .nav-links-container {
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-link {
-      margin: 0 18px;
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: color 0.3s;
-    }
-
-    .nav-link:first-of-type {
-      color: #FDC03B;
-    }
-
-    .nav-link:hover {
-      color: #FDC03B;
-    }
-
-    /* === 🔥 Leuchtender Reach Out Button === */
-    .reach-out-button {
-      margin-left: 30px;
-      background-color: #FDC03B;
-      color: black;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      position: relative;
-      animation: glow 1.8s infinite alternate;
-      box-shadow: 0 0 15px rgba(253, 192, 59, 0.6);
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-
-    .reach-out-button:hover {
-      background-color: #FFD700;
-      box-shadow: 0 0 25px rgba(253, 192, 59, 0.8);
-    }
-
-    @keyframes glow {
-      0% {
-        box-shadow: 0 0 10px rgba(253, 192, 59, 0.4),
-                    0 0 20px rgba(253, 192, 59, 0.3),
-                    0 0 30px rgba(253, 192, 59, 0.2);
-      }
-      50% {
-        box-shadow: 0 0 20px rgba(253, 192, 59, 0.8),
-                    0 0 30px rgba(253, 192, 59, 0.6),
-                    0 0 40px rgba(253, 192, 59, 0.4);
-      }
-      100% {
-        box-shadow: 0 0 10px rgba(253, 192, 59, 0.4),
-                    0 0 20px rgba(253, 192, 59, 0.3),
-                    0 0 30px rgba(253, 192, 59, 0.2);
-      }
-    }
-
-    .click-me-arrow {
-      position: absolute;
-      top: calc(-45px + 125px);
-      right: calc(0px + 40px);
-      color: #FDC03B;
-      font-size: 1rem;
-      font-weight: 600;
-      white-space: nowrap;
-      pointer-events: none;
-      transform: rotate(-20deg);
-    }
-
-    .click-me-arrow::before {
-      content: '↑';
-      display: block;
-      font-size: 2rem;
-      line-height: 0.8;
-      text-align: center;
-      margin-bottom: 5px;
-    }
-
-    /* === Scrollbarer Bereich === */
-    .scroll-area {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      overflow-y: auto;
-      
-      z-index: 5;
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 200px, black calc(100% - 100px), transparent 100%);
-      mask-image: linear-gradient(to bottom, transparent 70px, black 200px, black calc(100% - 100px), transparent 100%);
-    }
-
-    .section {
-  /* height: 100vh; */       /* alte Höhe entfernen */
-  min-height: 250vh;         /* doppelte Viewport-Höhe */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; /* Text oben anfangen */
-  text-align: center;
-  scroll-snap-align: start;
-  padding: 200px;        /* etwas mehr Platz oben und unten */
-}
-
-
-    .headline {
-      font-size: 3rem;
-      font-weight: 900;
-      color: #FDC03B;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.9);
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      margin-bottom: 5px;
-    }
-
-    .tagline {
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.8);
-      letter-spacing: 0.15em;
-      max-width: 600px;
-    }
-
-    /* === Kontaktbutton mit Glow === */
-    .contact-btn {
-      margin-top: 20px;
-      background-color: #FDC03B;
-      color: black;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      animation: glow 1.8s infinite alternate;
-      box-shadow: 0 0 15px rgba(253, 192, 59, 0.6);
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-
-    .contact-btn:hover {
-      background-color: #FFD700;
-      box-shadow: 0 0 25px rgba(253, 192, 59, 0.8);
-    }
-
-    /* === Bild links unten === */
-    .portrait {
-      position: absolute;
-      bottom: -40px;
-      left: 20px;
-      width: 300px;
-      height: auto;
-      border-radius: 10px;
-      z-index: 4;
-    }
-
-.about-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;   /* rechtsbündig horizontal für Inhalte */
-  justify-content: center; /* vertikal zentriert */
-  text-align: left;       /* Text linksbündig */
-  max-width: 700px;
-  padding: 0 50px;         /* Abstand vom rechten Rand */
-  height: 100vh;           /* gleiche Höhe wie Section 1 & 3 */
-  margin-left: auto;        /* schiebt die Box nach rechts */
-}
-
-/* Überschrift linksbündig */
-.about-container h2 {
-  align-self: flex-start;  /* Überschrift links anordnen */
-  text-align: left;        /* Text linksbündig */
-  margin-bottom: 15px;
-}
-
-
-    .about-container h2 {
-      font-size: 2.8rem;
-      font-weight: 900;
-      color: #FDC03B;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
-
-    .about-container p {
-      font-size: 1.15rem;
-      color: rgba(255, 255, 255, 0.85);
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
-    .skills {
-      margin-top: 25px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skill {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #FDC03B;
-      letter-spacing: 0.05em;
-    }
-
     
+    .legal-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: var(--space-4xl) 0;
+    }
+    
+    .legal-section {
+      background: var(--bg-secondary);
+      border: 1px solid var(--gray-800);
+      border-radius: var(--radius-xl);
+      padding: var(--space-2xl);
+      margin-bottom: var(--space-2xl);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .legal-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+    }
+    
+    .legal-section h2 {
+      color: var(--primary);
+      margin-bottom: var(--space-lg);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .legal-section h3 {
+      color: var(--text-primary);
+      margin: var(--space-xl) 0 var(--space-md);
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    
+    .legal-section p,
+    .legal-section li {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: var(--space-md);
+    }
+    
+    .legal-section ul {
+      padding-left: var(--space-xl);
+      margin-bottom: var(--space-lg);
+    }
+    
+    .contact-info {
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid var(--primary);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      margin: var(--space-xl) 0;
+    }
+    
+    .contact-info h3 {
+      color: var(--primary);
+      margin-bottom: var(--space-md);
+    }
+    
+    .contact-info p {
+      color: var(--text-primary);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .contact-info a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color var(--transition-normal);
+    }
+    
+    .contact-info a:hover {
+      color: var(--accent);
+    }
+    
+    @media (max-width: 768px) {
+      .legal-content {
+        padding: var(--space-2xl) var(--space-md);
+      }
+      
+      .legal-section {
+        padding: var(--space-xl);
+        margin-bottom: var(--space-xl);
+      }
+    }
   </style>
 </head>
- 
-<!-- Legal content styles: responsive sizing for desktop/tablet/phone -->
-<style>
-  .legal-content { width: 100%; max-width: 980px; margin: 28px auto; padding: 28px 32px; box-sizing: border-box; color: rgba(255,255,255,0.95); text-align: left; background: rgba(255,255,255,0.02); border-radius: 8px; }
-  .legal-content h4 { margin-top: 0; color: #FDC03B; font-size: 1.05rem; letter-spacing: 0.02em; }
-  .legal-content p { color: rgba(255,255,255,0.92); line-height: 1.65; margin: 0 0 12px 0; font-size: 1rem; }
-  .legal-content a { color: #FDC03B; text-decoration: underline; }
-  .legal-content strong { color: #fff; }
-
-  @media (max-width: 900px) {
-    .legal-content { padding: 22px; margin: 20px; }
-    .legal-content h4 { font-size: 1rem; }
-    .legal-content p { font-size: 0.98rem; }
-  }
-
-  @media (max-width: 600px) {
-    .legal-content { padding: 18px; margin: 14px; }
-    .headline { font-size: 2rem; }
-    .legal-content h4 { font-size: 0.95rem; }
-    .legal-content p { font-size: 0.94rem; }
-  }
-</style>
-
 <body>
   <!-- Navigation -->
-  <header class="navbar">
-    <a href="#" class="logo">
-      <div class="logo-symbols">
-        <span class="cyber-blue">{</span>
-        <span class="text-white" style="margin: 0 6px;">C</span>
-        <span class="cyber-blue cursor-blink">}</span>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-container">
+        <a href="index.html" class="navbar-brand">
+          <span style="color: var(--primary);">{</span>
+          <span>CIRPAN</span>
+          <span style="color: var(--primary); animation: blink 1s infinite;">}</span>
+        </a>
+        
+        <ul class="navbar-nav">
+          <li><a href="index.html" class="nav-link">Start</a></li>
+          <li><a href="index.html#about" class="nav-link">Über mich</a></li>
+          <li><a href="index.html#services" class="nav-link">Services</a></li>
+          <li><a href="project.html" class="nav-link">Projekte</a></li>
+          <li><a href="reachOut.html" class="nav-link">Kontakt</a></li>
+        </ul>
+        
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-      <div class="logo-text">
-        <span class="main">IRPAN</span>
-        <span class="sub">Software Development</span>
-      </div>
-    </a>
-
-    <!-- Hamburger (visible on small screens via responsive.css) -->
-    <div class="hamburger" aria-label="Öffne Navigation" role="button">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
     </div>
-
-    <div class="nav-links-container">
-      <a href="index.html" class="nav-link">STARTSEITE</a>
-      <a href="index.html#about" class="nav-link">ÜBER MICH</a>
-      <a href="project.html" class="nav-link">PROJEKTE</a>
-
-      <button class="reach-out-button" onclick="window.location.href='reachOut.html'">
-        REACH OUT
-        <span class="click-me-arrow">click me</span>
-      </button>
+  </nav>
+  
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobile-nav">
+    <div class="mobile-nav-content">
+      <a href="index.html" class="nav-link">Start</a>
+      <a href="index.html#about" class="nav-link">Über mich</a>
+      <a href="index.html#services" class="nav-link">Services</a>
+      <a href="project.html" class="nav-link">Projekte</a>
+      <a href="reachOut.html" class="nav-link">Kontakt</a>
     </div>
-  </header>
-
-  <!-- fixed portrait removed; scrollable portrait remains inside .scroll-area -->
-
-  <!-- Scrollbarer Bereich -->
-  <div class="scroll-area">
-
-      <!-- Gelbe Blur-Flecken in scroll-area -->
-  <div class="blur-circle before"></div>
-  <div class="blur-circle after"></div>
-
-  
-
-  
-
-<!-- Scrollbarer Bereich -->
-<div class="scroll-area">
-  <div class=""></div>
-  <div class=""></div>
-
-
-    <!-- Datenschutz Section -->
-    <section class="section text-center">
-      <h3 class="headline">Datenschutzerklärung</h3>
-      <div class="legal-content">
-        <p><strong>Stand:</strong> Oktober 2025</p>
-
-        <h4>1. Verantwortlicher</h4>
-        <p>CIRPAN Software Development – Oğuzhan Cirpan</p>
-        <p>[E-Mail: <a href="mailto:info.cirpan@gmail.com">info.cirpan@gmail.com</a>]</p>
-        <p>[Adresse wird nachgetragen]</p>
-
-        <h4>2. Allgemeines zur Datenverarbeitung</h4>
-        <p>Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TKG 2003).</p>
-
-        <h4>3. Erhebung und Nutzung personenbezogener Daten</h4>
-        <p>Wenn Sie uns über das Kontaktformular oder per E-Mail kontaktieren, werden Ihre angegebenen Daten (Name, E-Mail-Adresse, Nachricht) ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Diese Daten werden nicht dauerhaft gespeichert oder weitergegeben, sofern keine Geschäftsbeziehung entsteht.</p>
-
-        <h4>4. Verwendung von EmailJS</h4>
-        <p>Für den Versand von Kontaktformularnachrichten wird der Dienst EmailJS (<a href="https://www.emailjs.com" target="_blank" rel="noopener">https://www.emailjs.com</a>) genutzt. Dabei werden die vom Nutzer im Formular eingegebenen Daten (Name, E-Mail, Nachricht) über die Server von EmailJS an unsere E-Mail-Adresse weitergeleitet. Die Daten werden ausschließlich zur Kontaktaufnahme verwendet. Weitere Informationen zum Datenschutz von EmailJS finden Sie unter: <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener">https://www.emailjs.com/legal/privacy-policy/</a></p>
-
-        <h4>5. Hosting</h4>
-        <p>Projekte unserer Kunden können bei verschiedenen Hosting-Anbietern betrieben werden (z. B. GitHub Pages, Firebase, Netlify, Vercel oder andere). Dabei werden Serververbindungen hergestellt, die IP-Adressen technisch bedingt verarbeiten. Diese Verarbeitung ist notwendig, um die Website oder App korrekt bereitzustellen.</p>
-
-        <h4>6. Cookies und Analyse-Tools</h4>
-        <p>Unsere Website verwendet derzeit keine Cookies und keine Analysetools (wie Google Analytics). Sollte sich dies ändern, wird diese Datenschutzerklärung entsprechend angepasst.</p>
-
-        <h4>7. Rechte der betroffenen Personen</h4>
-        <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch. Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt, können Sie sich an die Datenschutzbehörde wenden.</p>
-        <p><strong>Kontakt zur Behörde:</strong><br>Österreichische Datenschutzbehörde<br>Barichgasse 40–42, 1030 Wien<br>E-Mail: <a href="mailto:dsb@dsb.gv.at">dsb@dsb.gv.at</a></p>
-
-        <h4>8. Speicherung und Löschung</h4>
-        <p>Anfragen per E-Mail oder Kontaktformular werden nach abschließender Bearbeitung gelöscht, sofern keine gesetzliche Aufbewahrungspflicht besteht.</p>
-      </div>
-    </section>
   </div>
-
-
-
-   
-
-
-
-<!-- Footer (außerhalb von scroll-area) -->
-<footer id="footer-placeholder" style="width: 100%;"></footer>
-
-<style>
-
-    .scroll-area {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow-y: auto;
-  }
-
-  /* Blur-Flecken jetzt relativ zur scroll-area */
-  .blur-circle {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    z-index: -1;
-  }
-
-  .blur-circle.before {
-    width: 480px;
-    height: 480px;
-    bottom: -100px;
-    left: -100px;
-    background: linear-gradient(45deg, #FFD439, transparent);
-  }
-
-
   
-  /* Footer-Styling */
-  footer {
-    background-color: #121212; /* gleiche Farbe wie Body */
-    color: white;
-    width: 100%;
-    height: 260px;
-    display: flex;
-    align-items: center; /* gleiche Höhe horizontal */
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-  }
-
-  footer a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-  }
-
-  footer a:hover {
-    color: #FDC03B;
-  }
-</style>
-
-<style>
-  /* Responsive overrides to match AGB layout on tablet and mobile */
-  @media (max-width: 900px) {
-    .section { padding: 140px 18px 32px 18px; }
-    .headline { font-size: 1.8rem; }
-    .legal-content { padding: 20px; margin: 18px; }
-  }
-
-  @media (max-width: 600px) {
-    body { overflow-y: auto; }
-    .navbar { padding: 14px 16px; }
-    .nav-links-container { display: none; }
-    .hamburger { display: block; width: 34px; height: 24px; cursor: pointer; }
-    .hamburger .bar { height: 3px; background: #fff; margin: 5px 0; border-radius: 2px; }
-    .section { padding: 110px 12px 28px 12px; }
-    .headline { font-size: 1.4rem; }
-    .legal-content { padding: 16px; margin: 12px; font-size: 0.95rem; }
-    /* shift main text down by 60px on smartphones */
-    .section { transform: translateY(60px); }
-  }
-
-  @media (min-width: 601px) { .hamburger { display: none; } }
-</style>
-
-<!-- Footer laden -->
-<script>
-  fetch('footer.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('footer-placeholder').innerHTML = data;
-    })
-    .catch(err => console.error('Fehler beim Laden des Footers:', err));
-</script>
-
-<!-- Mobile nav script -->
-<script src="js/mobile-nav.js"></script>
-<script src="js/index.js"></script>
-
+  <!-- Hero Section -->
+  <section class="legal-hero">
+    <div class="container">
+      <h1 class="h1 animate-fade-in-up">Datenschutzerklärung</h1>
+      <p class="text-lg text-secondary animate-fade-in-up" style="animation-delay: 0.2s;">
+        Informationen zum Schutz Ihrer persönlichen Daten gemäß DSGVO
+      </p>
+    </div>
+  </section>
   
+  <!-- Legal Content -->
+  <section class="section">
+    <div class="container">
+      <div class="legal-content">
+        
+        <!-- Verantwortlicher -->
+        <div class="legal-section">
+          <h2>1. Verantwortlicher</h2>
+          <div class="contact-info">
+            <h3>CIRPAN Software Development</h3>
+            <p><strong>Inhaber:</strong> Oğuzhan Cirpan</p>
+            <p><strong>Adresse:</strong> Wien, Österreich</p>
+            <p><strong>E-Mail:</strong> <a href="mailto:info.cirpan@gmail.com">info.cirpan@gmail.com</a></p>
+            <p><strong>Website:</strong> <a href="https://cirpan.at">https://cirpan.at</a></p>
+          </div>
+        </div>
+        
+        <!-- Datenverarbeitung -->
+        <div class="legal-section">
+          <h2>2. Erhebung und Verarbeitung personenbezogener Daten</h2>
+          
+          <h3>2.1 Beim Besuch der Website</h3>
+          <p>
+            Bei jedem Zugriff auf unsere Website werden automatisch Informationen allgemeiner Natur erfasst. 
+            Diese Informationen (Server-Logfiles) beinhalten etwa die Art des Webbrowsers, das verwendete 
+            Betriebssystem, den Domainnamen Ihres Internet-Service-Providers und ähnliches.
+          </p>
+          <p>Hierbei handelt es sich ausschließlich um Informationen, die keine Rückschlüsse auf Ihre Person zulassen.</p>
+          
+          <h3>2.2 Kontaktformular</h3>
+          <p>
+            Wenn Sie unser Kontaktformular nutzen, werden die von Ihnen eingegebenen Daten zur Bearbeitung 
+            Ihrer Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir 
+            nicht ohne Ihre Einwilligung weiter.
+          </p>
+          
+          <h3>2.3 EmailJS Service</h3>
+          <p>
+            Für die Übermittlung von Kontaktformularen nutzen wir den Dienst EmailJS. Die Verarbeitung 
+            erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO aus unserem berechtigten Interesse an 
+            der Beantwortung Ihrer Kontaktanfrage.
+          </p>
+        </div>
+        
+        <!-- Cookies -->
+        <div class="legal-section">
+          <h2>3. Cookies</h2>
+          <p>
+            Unsere Website verwendet Cookies. Cookies sind kleine Textdateien, die im Internetbrowser bzw. 
+            vom Internetbrowser auf dem Computersystem des Nutzers gespeichert werden.
+          </p>
+          
+          <h3>3.1 Notwendige Cookies</h3>
+          <p>
+            Diese Cookies sind für das Funktionieren der Website unbedingt erforderlich und können in 
+            unseren Systemen nicht deaktiviert werden. Sie werden normalerweise nur als Reaktion auf 
+            von Ihnen getätigte Aktionen gesetzt.
+          </p>
+          
+          <h3>3.2 Cookie-Einstellungen</h3>
+          <p>
+            Sie können Ihre Cookie-Präferenzen jederzeit über unser Cookie-Banner verwalten oder direkt 
+            in den Einstellungen Ihres Browsers ändern.
+          </p>
+        </div>
+        
+        <!-- Rechte -->
+        <div class="legal-section">
+          <h2>4. Ihre Rechte</h2>
+          <p>Sie haben folgende Rechte bezüglich Ihrer personenbezogenen Daten:</p>
+          <ul>
+            <li><strong>Recht auf Auskunft:</strong> Sie können Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten verlangen.</li>
+            <li><strong>Recht auf Berichtigung:</strong> Sie haben ein Recht auf unverzügliche Berichtigung unrichtiger Daten.</li>
+            <li><strong>Recht auf Löschung:</strong> Sie können die Löschung Ihrer personenbezogenen Daten verlangen.</li>
+            <li><strong>Recht auf Einschränkung:</strong> Sie können die Einschränkung der Verarbeitung verlangen.</li>
+            <li><strong>Recht auf Datenübertragbarkeit:</strong> Sie haben das Recht, Ihre Daten in einem strukturierten Format zu erhalten.</li>
+            <li><strong>Widerspruchsrecht:</strong> Sie können der Verarbeitung Ihrer Daten widersprechen.</li>
+          </ul>
+          
+          <p>
+            Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: 
+            <a href="mailto:info.cirpan@gmail.com">info.cirpan@gmail.com</a>
+          </p>
+        </div>
+        
+        <!-- Speicherdauer -->
+        <div class="legal-section">
+          <h2>5. Speicherdauer</h2>
+          <p>
+            Personenbezogene Daten werden nur so lange gespeichert, wie es für den jeweiligen Zweck 
+            erforderlich ist oder gesetzliche Aufbewahrungsfristen bestehen.
+          </p>
+          <p>
+            Kontaktanfragen werden für die Dauer der Bearbeitung und für eventuelle Rückfragen 
+            für einen Zeitraum von maximal 3 Jahren gespeichert.
+          </p>
+        </div>
+        
+        <!-- Sicherheit -->
+        <div class="legal-section">
+          <h2>6. Datensicherheit</h2>
+          <p>
+            Wir verwenden angemessene technische und organisatorische Sicherheitsmaßnahmen, um Ihre 
+            Daten gegen zufällige oder vorsätzliche Manipulationen, teilweisen oder vollständigen 
+            Verlust, Zerstörung oder gegen den unbefugten Zugriff Dritter zu schützen.
+          </p>
+        </div>
+        
+        <!-- Änderungen -->
+        <div class="legal-section">
+          <h2>7. Änderungen der Datenschutzerklärung</h2>
+          <p>
+            Wir behalten uns vor, diese Datenschutzerklärung gelegentlich anzupassen, damit sie stets 
+            den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen 
+            in der Datenschutzerklärung umzusetzen.
+          </p>
+          <p><strong>Stand:</strong> Oktober 2025</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="section-sm bg-secondary">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-xl">
+        <div class="col-span-2">
+          <div class="navbar-brand mb-lg">
+            <span style="color: var(--primary);">{</span>
+            <span>CIRPAN</span>
+            <span style="color: var(--primary);">}</span>
+          </div>
+          <p class="text-muted mb-lg">
+            Professionelle Software-Entwicklung mit modernsten Technologien 
+            und ansprechendem Design.
+          </p>
+          <p class="text-sm text-muted">
+            © 2025 CIRPAN Software Development. Alle Rechte vorbehalten.
+          </p>
+        </div>
+        
+        <div>
+          <h4 class="mb-lg">Services</h4>
+          <ul class="space-y-sm">
+            <li><a href="index.html#services" class="text-muted hover:text-primary transition">iOS Entwicklung</a></li>
+            <li><a href="index.html#services" class="text-muted hover:text-primary transition">Android Entwicklung</a></li>
+            <li><a href="index.html#services" class="text-muted hover:text-primary transition">Web Entwicklung</a></li>
+            <li><a href="index.html#services" class="text-muted hover:text-primary transition">UI/UX Design</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="mb-lg">Legal</h4>
+          <ul class="space-y-sm">
+            <li><a href="impressum.html" class="text-muted hover:text-primary transition">Impressum</a></li>
+            <li><a href="datenschutz.html" class="text-muted hover:text-primary transition">Datenschutz</a></li>
+            <li><a href="cookies.html" class="text-muted hover:text-primary transition">Cookie-Richtlinie</a></li>
+            <li><a href="agb.html" class="text-muted hover:text-primary transition">AGB</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script src="js/cookie-consent.js"></script>
+  <script src="js/modern.js"></script>
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    
+    if (mobileMenuBtn && mobileNav) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
+      });
+      
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNav.style.display = 'none';
+        });
+      });
+    }
+  </script>
 </body>
 </html>
-

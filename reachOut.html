@@ -3,567 +3,783 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontakt – CIRPAN Software</title>
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-
-  <!-- Externe CSS -->
-  <link rel="stylesheet" href="style/contact.css">
-  <link rel="stylesheet" href="style/responsive.css">
-</head>
-
-<body class="reachout">
-
-  <!-- Navigation -->
-  <header class="navbar">
-    <a href="index.html" class="logo">
-      <div class="logo-symbols">
-        <span class="cyber-blue">{</span>
-        <span class="text-white" style="margin: 0 6px;">C</span>
-        <span class="cyber-blue cursor-blink">}</span>
-      </div>
-      <div class="logo-text">
-        <span class="main">IRPAN</span>
-        <span class="sub">Software Development</span>
-      </div>
-    </a>
-
-    <div class="nav-links-container">
-  <a href="index.html" class="nav-link">STARTSEITE</a>
-  <a href="index.html#about" class="nav-link">ÜBER MICH</a>
-  <a href="project.html" class="nav-link">PROJEKTE</a>
-
-      <button class="reach-out-button" id="reachOutBtn">
-        REACH OUT
-        <span class="click-me-arrow">click me</span>
-      </button>
-    </div>
-  </header>
-
-  <style>
-    /* === Grundlayout === */
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background-color: #121212;
-      color: white;
-      font-family: 'Inter', sans-serif;
-      overflow: hidden;
-      position: relative;
-    }
-
+  <title>Kontakt — CIRPAN Software Development</title>
   
-    body::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 1;
-      z-index: -1;
-    }
-
-    body::before {
-      background: linear-gradient(45deg, #FFD439, transparent);
-      bottom: -100px;
-      left: -100px;
-      width: 480px;
-      height: 480px;
-    }
-
-    body::after {
-      background: linear-gradient(225deg, #FFD439, transparent);
-      top: -100px;
-      right: -100px;
-      width: 300px;
-      height: 300px;
-    }
-
-    /* === Navigation === */
-    .navbar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 25px 50px;
-      box-sizing: border-box;
-      z-index: 20;
-      background: transparent;
-    }
-
-    /* === Logo === */
-    .logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .cyber-blue {
-      color: #00ffff;
-    }
-
-    .cursor-blink {
-      animation: blink 1s step-start infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-
-    .logo-symbols {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 6px;
-      position: relative;
-      top: -5px;
-    }
-
-    .logo-symbols span {
-      font-size: 2rem;
-      font-weight: 800;
-      line-height: 1;
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-    }
-
-    .logo-text .main {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: white;
-      letter-spacing: -0.05em;
-      margin-bottom: 2px;
-    }
-
-    .logo-text .sub {
-      font-size: 0.6rem;
-      color: #9ca3af;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      text-align: left;
-      margin-left: 0.25rem;
-      position: relative;
-      left: -5px;
-      top: 5px;
-    }
-
-    /* === Navigation rechts === */
-    .nav-links-container {
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-link {
-      margin: 0 18px;
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: color 0.3s;
-    }
-
-    .nav-link:first-of-type {
-      color: #FDC03B;
-    }
-
-    .nav-link:hover {
-      color: #FDC03B;
-    }
-
-    /* === 🔥 Leuchtender Reach Out Button === */
-    .reach-out-button {
-      margin-left: 30px;
-      background-color: #FDC03B;
-      color: black;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      position: relative;
-      animation: glow 1.8s infinite alternate;
-      box-shadow: 0 0 15px rgba(253, 192, 59, 0.6);
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-
-    .reach-out-button:hover {
-      background-color: #FFD700;
-      box-shadow: 0 0 25px rgba(253, 192, 59, 0.8);
-    }
-
-    @keyframes glow {
-      0% {
-        box-shadow: 0 0 10px rgba(253, 192, 59, 0.4),
-                    0 0 20px rgba(253, 192, 59, 0.3),
-                    0 0 30px rgba(253, 192, 59, 0.2);
-      }
-      50% {
-        box-shadow: 0 0 20px rgba(253, 192, 59, 0.8),
-                    0 0 30px rgba(253, 192, 59, 0.6),
-                    0 0 40px rgba(253, 192, 59, 0.4);
-      }
-      100% {
-        box-shadow: 0 0 10px rgba(253, 192, 59, 0.4),
-                    0 0 20px rgba(253, 192, 59, 0.3),
-                    0 0 30px rgba(253, 192, 59, 0.2);
-      }
-    }
-
-    .click-me-arrow {
-      position: absolute;
-      top: calc(-45px + 125px);
-      right: calc(0px + 40px);
-      color: #FDC03B;
-      font-size: 1rem;
-      font-weight: 600;
-      white-space: nowrap;
-      pointer-events: none;
-      transform: rotate(-20deg);
-    }
-
-    .click-me-arrow::before {
-      content: '↑';
-      display: block;
-      font-size: 2rem;
-      line-height: 0.8;
+  <!-- SEO & Meta -->
+  <meta name="description" content="Kontaktieren Sie CIRPAN Software Development für Ihre iOS App, Android App oder Website Projekte. Professionelle Beratung und Entwicklung.">
+  <meta name="keywords" content="Kontakt, Software Entwicklung, iOS App, Android App, Website, Beratung">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style/modern.css">
+  
+  <style>
+    .contact-hero {
+      padding: var(--space-5xl) 0 var(--space-4xl);
       text-align: center;
-      margin-bottom: 5px;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      position: relative;
+      overflow: hidden;
     }
-
-    /* === Scrollbarer Bereich === */
-    .scroll-area {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      overflow-y: auto;
-      
-      z-index: 5;
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 200px, black calc(100% - 100px), transparent 100%);
-      mask-image: linear-gradient(to bottom, transparent 70px, black 200px, black calc(100% - 100px), transparent 100%);
-    }
-
-    .section {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      scroll-snap-align: start;
-      padding: 20px;
-    }
-
-    .headline {
-      font-size: 3rem;
-      font-weight: 900;
-      color: #FDC03B;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.9);
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      margin-bottom: 5px;
-    }
-
-    .tagline {
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.8);
-      letter-spacing: 0.15em;
-      max-width: 600px;
-    }
-
-    /* === Kontaktbutton mit Glow === */
-    .contact-btn {
-      margin-top: 20px;
-      background-color: #FDC03B;
-      color: black;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      animation: glow 1.8s infinite alternate;
-      box-shadow: 0 0 15px rgba(253, 192, 59, 0.6);
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-
-    .contact-btn:hover {
-      background-color: #FFD700;
-      box-shadow: 0 0 25px rgba(253, 192, 59, 0.8);
-    }
-
-    /* === Bild links unten === */
-    .portrait {
-      position: absolute;
-      bottom: -40px;
-      left: 20px;
-      width: 300px;
-      height: auto;
-      border-radius: 10px;
-      z-index: 4;
-    }
-
-.about-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;   /* rechtsbündig horizontal für Inhalte */
-  justify-content: center; /* vertikal zentriert */
-  text-align: left;       /* Text linksbündig */
-  max-width: 700px;
-  padding: 0 50px;         /* Abstand vom rechten Rand */
-  height: 100vh;           /* gleiche Höhe wie Section 1 & 3 */
-  margin-left: auto;        /* schiebt die Box nach rechts */
-}
-
-/* Überschrift linksbündig */
-.about-container h2 {
-  align-self: flex-start;  /* Überschrift links anordnen */
-  text-align: left;        /* Text linksbündig */
-  margin-bottom: 15px;
-}
-
-
-    .about-container h2 {
-      font-size: 2.8rem;
-      font-weight: 900;
-      color: #FDC03B;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
-
-    .about-container p {
-      font-size: 1.15rem;
-      color: rgba(255, 255, 255, 0.85);
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
-    .skills {
-      margin-top: 25px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skill {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #FDC03B;
-      letter-spacing: 0.05em;
-    }
-
     
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4xl);
+      align-items: start;
+    }
+    
+    .contact-info {
+      background: var(--bg-secondary);
+      border: 1px solid var(--gray-800);
+      border-radius: var(--radius-xl);
+      padding: var(--space-2xl);
+      height: fit-content;
+    }
+    
+    .contact-form {
+      background: var(--bg-secondary);
+      border: 1px solid var(--gray-800);
+      border-radius: var(--radius-xl);
+      padding: var(--space-2xl);
+    }
+    
+    .form-group {
+      margin-bottom: var(--space-lg);
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: var(--space-sm);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      padding: var(--space-md);
+      background: var(--bg-tertiary);
+      border: 2px solid var(--gray-800);
+      border-radius: var(--radius-lg);
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: all var(--transition-normal);
+      font-family: inherit;
+    }
+    
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+    
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+    }
+    
+    .project-type-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-sm);
+    }
+    
+    .project-type-option {
+      position: relative;
+    }
+    
+    .project-type-option input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .project-type-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-lg);
+      background: var(--bg-tertiary);
+      border: 2px solid var(--gray-800);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      text-align: center;
+    }
+    
+    .project-type-option input:checked + .project-type-label {
+      border-color: var(--primary);
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+    }
+    
+    .project-type-icon {
+      font-size: 2rem;
+    }
+    
+    .project-type-text {
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    
+    .budget-range {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-sm);
+    }
+    
+    .budget-option {
+      position: relative;
+    }
+    
+    .budget-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .budget-label {
+      display: block;
+      padding: var(--space-md);
+      background: var(--bg-tertiary);
+      border: 2px solid var(--gray-800);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      text-align: center;
+      font-weight: 500;
+    }
+    
+    .budget-option input:checked + .budget-label {
+      border-color: var(--primary);
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+      padding: var(--space-lg);
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-lg);
+      transition: all var(--transition-normal);
+    }
+    
+    .contact-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      flex-shrink: 0;
+    }
+    
+    .contact-details h4 {
+      margin: 0 0 var(--space-xs);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    .contact-details p {
+      margin: 0;
+      color: var(--text-secondary);
+    }
+    
+    .contact-details a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color var(--transition-normal);
+    }
+    
+    .contact-details a:hover {
+      color: var(--primary-light);
+    }
+    
+    .form-submit {
+      width: 100%;
+      padding: var(--space-lg);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: white;
+      border: none;
+      border-radius: var(--radius-lg);
+      font-size: 1.125rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .form-submit:hover {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .form-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .form-submit .loading {
+      display: none;
+    }
+    
+    .form-submit.loading .loading {
+      display: inline;
+    }
+    
+    .form-submit.loading .text {
+      display: none;
+    }
+    
+    .success-message,
+    .error-message {
+      padding: var(--space-lg);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-lg);
+      font-weight: 500;
+      display: none;
+    }
+    
+    .success-message {
+      background: rgba(16, 185, 129, 0.1);
+      border: 2px solid var(--success);
+      color: var(--success);
+    }
+    
+    .error-message {
+      background: rgba(239, 68, 68, 0.1);
+      border: 2px solid var(--error);
+      color: var(--error);
+    }
+    
+    .availability-status {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-md) var(--space-lg);
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--success);
+      border-radius: var(--radius-lg);
+      color: var(--success);
+      font-weight: 500;
+      margin-bottom: var(--space-xl);
+    }
+    
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .contact-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .project-type-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .budget-range {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-md);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .project-type-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-hero {
+        padding: var(--space-3xl) 0 var(--space-2xl);
+      }
+    }
   </style>
 </head>
-
 <body>
   <!-- Navigation -->
-  <header class="navbar">
-    <a href="#" class="logo">
-      <div class="logo-symbols">
-        <span class="cyber-blue">{</span>
-        <span class="text-white" style="margin: 0 6px;">C</span>
-        <span class="cyber-blue cursor-blink">}</span>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-container">
+        <a href="index.html" class="navbar-brand">
+          <span style="color: var(--primary);">{</span>
+          <span>CIRPAN</span>
+          <span style="color: var(--primary); animation: blink 1s infinite;">}</span>
+        </a>
+        
+        <ul class="navbar-nav">
+          <li><a href="index.html" class="nav-link">Start</a></li>
+          <li><a href="index.html#about" class="nav-link">Über mich</a></li>
+          <li><a href="index.html#services" class="nav-link">Services</a></li>
+          <li><a href="project.html" class="nav-link">Projekte</a></li>
+          <li><a href="reachOut.html" class="nav-link active">Kontakt</a></li>
+        </ul>
+        
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-      <div class="logo-text">
-        <span class="main">IRPAN</span>
-        <span class="sub">Software Development</span>
-      </div>
-    </a>
-
-    <!-- Hamburger (visible on small screens via responsive.css) -->
-    <div class="hamburger" aria-label="Öffne Navigation" role="button">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
     </div>
-
-    <div class="nav-links-container">
-      <a href="index.html" class="nav-link">HOME</a>
-      <a href="index.html#about" class="nav-link">ABOUT</a>
-      <a href="project.html" class="nav-link">PROJECT</a>
-
-      <button class="reach-out-button" onclick="window.location.href='reachOut.html'">
-        REACH OUT
-        <span class="click-me-arrow">click me</span>
-      </button>
-    </div>
-  </header>
-
-  <!-- fixed portrait removed; scrollable portrait remains inside .scroll-area -->
-
-  <!-- Scrollbarer Bereich -->
-  <div class="scroll-area">
-
-      <!-- Gelbe Blur-Flecken in scroll-area -->
-  <div class="blur-circle before"></div>
-  <div class="blur-circle after"></div>
-
-  <!-- Portrait inside scroll-area so it scrolls with the page on desktop/tablet -->
-  <img src="image/ich.png" alt="Ich" class="portrait" />
-
-
+  </nav>
   
-
-    <!-- Section 1 -->
-    <section class="section text-center">
-
-     <!-- Kontaktformular -->
-<div class="contact-form-container">
-  <h3>Schreib mir eine Nachricht</h3>
-  <form id="contactForm">
-    <input type="text" name="name" placeholder="Dein Name" required>
-    <input type="email" name="email" placeholder="Deine E-Mail" required>
-    <textarea name="message" placeholder="Deine Nachricht" rows="6" required></textarea>
-    <button type="submit">Senden</button>
-    <p id="formMessage"></p>
-  </form>
-</div>
-
-<script>
-  // emailjs.init should be called from a centralized script with a safe configuration (avoid hardcoding keys in HTML).
-
-  const contactForm = document.getElementById('contactForm');
-  const formMessage = document.getElementById('formMessage');
-
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault(); // Standard-Submit verhindern
-
-    emailjs.sendForm('service_y2qfp0k', 'template_d1q49pp', this)
-      .then(() => {
-        formMessage.textContent = "Nachricht erfolgreich gesendet!";
-        contactForm.reset();
-      })
-      .catch((error) => {
-        console.error('EmailJS Fehler:', error);
-        formMessage.textContent = "Fehler beim Senden. Bitte später versuchen.";
-      });
-  });
-</script>
-
-
- </section>
-
- <section  class="section">
-  <!-- Kontakttext -->
-  <div class="contact-text-container">
-    <h2>Kontaktiere mich</h2>
-
-    <!-- Telefonnummer Button -->
-    <a href="tel:**** *** ****" class="phone-button">📞 **** *** ****</a>
-
-    <!-- Unsichtbare E-Mail für Funktion -->
-    <a href="mailto:ocirpan920@gmail.com" id="emailLink" style="display:none;">E-Mail senden</a>
-
-    <!-- Social Buttons -->
-    <div class="social-buttons">
-      <button id="linkedinBtn">LinkedIn</button>
-      <button id="githubBtn">GitHub</button>
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobile-nav">
+    <div class="mobile-nav-content">
+      <a href="index.html" class="nav-link">Start</a>
+      <a href="index.html#about" class="nav-link">Über mich</a>
+      <a href="index.html#services" class="nav-link">Services</a>
+      <a href="project.html" class="nav-link">Projekte</a>
+      <a href="reachOut.html" class="nav-link">Kontakt</a>
     </div>
   </div>
-
-    </section>
-
-
-  <!-- portrait removed from contact page; appears only on home (mobile) -->
-
-<!-- Footer (außerhalb von scroll-area) -->
-<footer id="footer-placeholder" style="width: 100%;"></footer>
-
-<style>
-
-    .scroll-area {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow-y: auto;
-  }
-
-  /* Blur-Flecken jetzt relativ zur scroll-area */
-  .blur-circle {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    z-index: -1;
-  }
-
-  .blur-circle.before {
-    width: 480px;
-    height: 480px;
-    bottom: -100px;
-    left: -100px;
-    background: linear-gradient(45deg, #FFD439, transparent);
-  }
-
-
   
-  /* Footer-Styling */
-  footer {
-    background-color: #121212; /* gleiche Farbe wie Body */
-    color: white;
-    width: 100%;
-    height: 260px;
-    display: flex;
-    align-items: center; /* gleiche Höhe horizontal */
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-  }
-
-  footer a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-  }
-
-  footer a:hover {
-    color: #FDC03B;
-  }
-</style>
-
-<!-- Footer laden -->
-<script>
-  fetch('footer.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('footer-placeholder').innerHTML = data;
-    })
-    .catch(err => console.error('Fehler beim Laden des Footers:', err));
-</script>
-
-<!-- Mobile nav script -->
-<script src="js/mobile-nav.js"></script>
-<script src="js/index.js"></script>
-
+  <!-- Hero Section -->
+  <section class="contact-hero">
+    <div class="container">
+      <h1 class="h1 animate-fade-in-up">Lassen Sie uns sprechen</h1>
+      <p class="text-lg text-secondary animate-fade-in-up" style="animation-delay: 0.2s;">
+        Haben Sie ein Projekt im Kopf? Ich helfe Ihnen gerne dabei, Ihre Idee zu verwirklichen.
+      </p>
+    </div>
+  </section>
   
+  <!-- Contact Content -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-content">
+        
+        <!-- Contact Information -->
+        <div class="contact-info animate-slide-in-left">
+          <h2 class="mb-xl">Kontakt Information</h2>
+          
+          <div class="availability-status">
+            <div class="status-dot"></div>
+            <span>Verfügbar für neue Projekte</span>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div class="contact-details">
+              <h4>E-Mail</h4>
+              <p>
+                <a href="mailto:info.cirpan@gmail.com">info.cirpan@gmail.com</a>
+              </p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">💬</div>
+            <div class="contact-details">
+              <h4>Antwortzeit</h4>
+              <p>Innerhalb von 24 Stunden</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">🌍</div>
+            <div class="contact-details">
+              <h4>Standort</h4>
+              <p>Österreich (Remote möglich)</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">⏰</div>
+            <div class="contact-details">
+              <h4>Arbeitszeiten</h4>
+              <p>Mo-Fr: 9:00 - 18:00 CET</p>
+            </div>
+          </div>
+          
+          <h3 class="mt-2xl mb-lg">Warum mit mir arbeiten?</h3>
+          <ul class="text-secondary" style="line-height: 1.8;">
+            <li>✓ Moderne Technologien & Best Practices</li>
+            <li>✓ Transparente Kommunikation</li>
+            <li>✓ Pünktliche Lieferung</li>
+            <li>✓ Langfristiger Support</li>
+            <li>✓ Competitive Preise</li>
+          </ul>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="contact-form animate-slide-in-right">
+          <h2 class="mb-xl">Projekt anfragen</h2>
+          
+          <div class="success-message" id="success-message">
+            ✅ Vielen Dank für Ihre Nachricht! Ich melde mich innerhalb von 24 Stunden bei Ihnen.
+          </div>
+          
+          <div class="error-message" id="error-message">
+            ❌ Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie direkt eine E-Mail.
+          </div>
+          
+                    <form id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="firstName">Vorname *</label>
+                <input type="text" id="firstName" name="from_name" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="lastName">Nachname *</label>
+                <input type="text" id="lastName" name="last_name" class="form-input" required>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="email">E-Mail *</label>
+                <input type="email" id="email" name="from_email" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="company">Unternehmen</label>
+                <input type="text" id="company" name="company" class="form-input">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Projekt-Typ *</label>
+              <div class="project-type-grid">
+                <div class="project-type-option">
+                  <input type="checkbox" id="ios" name="projectType" value="ios">
+                  <label for="ios" class="project-type-label">
+                    <div class="project-type-icon">📱</div>
+                    <div class="project-type-text">iOS App</div>
+                  </label>
+                </div>
+                <div class="project-type-option">
+                  <input type="checkbox" id="android" name="projectType" value="android">
+                  <label for="android" class="project-type-label">
+                    <div class="project-type-icon">🤖</div>
+                    <div class="project-type-text">Android App</div>
+                  </label>
+                </div>
+                <div class="project-type-option">
+                  <input type="checkbox" id="web" name="projectType" value="web">
+                  <label for="web" class="project-type-label">
+                    <div class="project-type-icon">🌐</div>
+                    <div class="project-type-text">Website</div>
+                  </label>
+                </div>
+                <div class="project-type-option">
+                  <input type="checkbox" id="design" name="projectType" value="design">
+                  <label for="design" class="project-type-label">
+                    <div class="project-type-icon">🎨</div>
+                    <div class="project-type-text">UI/UX Design</div>
+                  </label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Budget-Rahmen</label>
+              <div class="budget-range">
+                <div class="budget-option">
+                  <input type="radio" id="budget1" name="budget" value="< 5k">
+                  <label for="budget1" class="budget-label">< 5.000€</label>
+                </div>
+                <div class="budget-option">
+                  <input type="radio" id="budget2" name="budget" value="5k-15k">
+                  <label for="budget2" class="budget-label">5k - 15k€</label>
+                </div>
+                <div class="budget-option">
+                  <input type="radio" id="budget3" name="budget" value="15k-30k">
+                  <label for="budget3" class="budget-label">15k - 30k€</label>
+                </div>
+                <div class="budget-option">
+                  <input type="radio" id="budget4" name="budget" value="> 30k">
+                  <label for="budget4" class="budget-label">> 30.000€</label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="timeline">Gewünschter Zeitrahmen</label>
+              <select id="timeline" name="timeline" class="form-select">
+                <option value="">Bitte wählen...</option>
+                <option value="asap">So schnell wie möglich</option>
+                <option value="1-3months">1-3 Monate</option>
+                <option value="3-6months">3-6 Monate</option>
+                <option value="6months+">6+ Monate</option>
+                <option value="flexible">Flexibel</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="message">Projekt-Beschreibung *</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                class="form-textarea" 
+                placeholder="Beschreiben Sie Ihr Projekt, Ihre Ziele und besondere Anforderungen..."
+                required
+              ></textarea>
+            </div>
+            
+            <button type="submit" class="form-submit" id="submit-btn">
+              <span class="text">Nachricht senden</span>
+              <span class="loading">Wird gesendet...</span>
+            </button>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="section bg-secondary">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Häufige Fragen</h2>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
+        <div class="card">
+          <h4>Wie läuft ein Projekt ab?</h4>
+          <p class="text-secondary">
+            Nach dem ersten Gespräch erstelle ich ein detailliertes Angebot. 
+            Bei Beauftragung entwickeln wir in Sprints mit regelmäßigen Updates 
+            und Feedback-Runden.
+          </p>
+        </div>
+        
+        <div class="card">
+          <h4>Bieten Sie Wartung an?</h4>
+          <p class="text-secondary">
+            Ja, ich biete langfristigen Support und Wartung für alle entwickelten 
+            Projekte. Updates, Bugfixes und neue Features sind möglich.
+          </p>
+        </div>
+        
+        <div class="card">
+          <h4>Arbeiten Sie remote?</h4>
+          <p class="text-secondary">
+            Ja, ich arbeite hauptsächlich remote und bin flexibel bei 
+            Terminen. Persönliche Meetings in Österreich sind ebenfalls möglich.
+          </p>
+        </div>
+        
+        <div class="card">
+          <h4>Wie lange dauert ein Projekt?</h4>
+          <p class="text-secondary">
+            Das hängt von der Komplexität ab. Eine einfache App: 2-4 Wochen, 
+            komplexe Projekte: 2-6 Monate. Genaue Zeitpläne besprechen wir individuell.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="section-sm bg-secondary">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-xl">
+        <div class="col-span-2">
+          <div class="navbar-brand mb-lg">
+            <span style="color: var(--primary);">{</span>
+            <span>CIRPAN</span>
+            <span style="color: var(--primary);">}</span>
+          </div>
+          <p class="text-muted mb-lg">
+            Professionelle Software-Entwicklung mit modernsten Technologien 
+            und ansprechendem Design.
+          </p>
+          <p class="text-sm text-muted">
+            © 2025 CIRPAN Software Development. Alle Rechte vorbehalten.
+          </p>
+        </div>
+        
+        <div>
+          <h4 class="mb-lg">Services</h4>
+          <ul class="space-y-sm">
+            <li><a href="index.html#services" class="text-muted hover:text-primary transition">iOS Entwicklung</a></li>
+            <li><a href="index.html#services" class="text-muted hover:text-primary transition">Android Entwicklung</a></li>
+            <li><a href="index.html#services" class="text-muted hover:text-primary transition">Web Entwicklung</a></li>
+            <li><a href="index.html#services" class="text-muted hover:text-primary transition">UI/UX Design</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="mb-lg">Legal</h4>
+          <ul class="space-y-sm">
+            <li><a href="impressum.html" class="text-muted hover:text-primary transition">Impressum</a></li>
+            <li><a href="datenschutz.html" class="text-muted hover:text-primary transition">Datenschutz</a></li>
+            <li><a href="cookies.html" class="text-muted hover:text-primary transition">Cookie-Richtlinie</a></li>
+            <li><a href="agb.html" class="text-muted hover:text-primary transition">AGB</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script src="js/cookie-consent.js"></script>
+  <script src="js/modern.js"></script>
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
+    });
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.style.display = 'none';
+      });
+    });
+
+    // EmailJS Initialisierung
+    emailjs.init('y3DYAOkaoWSL6brCU');
+    
+    // Form handling with EmailJS
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const successMessage = document.getElementById('success-message');
+    const errorMessage = document.getElementById('error-message');
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Show loading state
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+      
+      // Hide previous messages
+      successMessage.style.display = 'none';
+      errorMessage.style.display = 'none';
+      
+      // Collect project types
+      const projectTypes = [];
+      document.querySelectorAll('input[name="projectType"]:checked').forEach(checkbox => {
+        projectTypes.push(checkbox.value);
+      });
+      
+      // Add project types to form data
+      const hiddenInput = document.createElement('input');
+      hiddenInput.type = 'hidden';
+      hiddenInput.name = 'project_types';
+      hiddenInput.value = projectTypes.join(', ');
+      form.appendChild(hiddenInput);
+      
+      try {
+        // Send with EmailJS
+        await emailjs.sendForm('service_y2qfp0k', 'template_d1q49pp', form);
+        
+        // Show success message
+        successMessage.style.display = 'block';
+        form.reset();
+        
+        // Scroll to success message
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+      } catch (error) {
+        console.error('EmailJS submission error:', error);
+        errorMessage.style.display = 'block';
+        errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } finally {
+        // Reset button state
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+        
+        // Remove hidden inputs
+        if (hiddenInput.parentNode) hiddenInput.remove();
+      }
+    });
+    
+    // Form validation
+    const requiredFields = form.querySelectorAll('[required]');
+    const projectTypeCheckboxes = document.querySelectorAll('input[name="projectType"]');
+    
+    function validateForm() {
+      let isValid = true;
+      
+      // Check required text fields
+      requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+          isValid = false;
+        }
+      });
+      
+      // Check if at least one project type is selected
+      const hasProjectType = Array.from(projectTypeCheckboxes).some(cb => cb.checked);
+      if (!hasProjectType) {
+        isValid = false;
+      }
+      
+      // Update submit button state
+      submitBtn.disabled = !isValid;
+    }
+    
+    // Add validation listeners
+    requiredFields.forEach(field => {
+      field.addEventListener('input', validateForm);
+      field.addEventListener('blur', validateForm);
+    });
+    
+    projectTypeCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', validateForm);
+    });
+    
+    // Initial validation
+    validateForm();
+  </script>
 </body>
 </html>
