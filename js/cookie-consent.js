@@ -82,9 +82,9 @@
   };
 
   // show banner if user hasn't chosen yet
-  const prefs = getPrefs();
-  if (!prefs || (prefs && typeof prefs.analytics === 'undefined')) {
-    // mark analytics/media explicitly undefined -> show banner
+  // Use the presence of the localStorage key to determine whether the user made a choice.
+  // getPrefs() returns default values which would incorrectly indicate a choice was made.
+  if (!localStorage.getItem(KEY)) {
     showBanner();
   }
 
