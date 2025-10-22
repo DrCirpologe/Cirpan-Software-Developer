@@ -265,6 +265,14 @@
     
     .stat-item {
       padding: var(--space-xl);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .stat-item.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     
     .stat-number {
@@ -574,22 +582,22 @@
       
       <div class="stats-grid">
         <div class="stat-item">
-          <span class="stat-number" data-count="20">0</span>
+          <span class="stat-number" data-count="20">20</span>
           <span class="stat-label">Projekte abgeschlossen</span>
         </div>
         
         <div class="stat-item">
-          <span class="stat-number" data-count="2">0</span>
+          <span class="stat-number" data-count="2">2</span>
           <span class="stat-label">Jahre Erfahrung</span>
         </div>
         
         <div class="stat-item">
-          <span class="stat-number" data-count="100">0</span>
+          <span class="stat-number" data-count="100">100</span>
           <span class="stat-label">% Kundenzufriedenheit</span>
         </div>
         
         <div class="stat-item">
-          <span class="stat-number" data-count="24">0</span>
+          <span class="stat-number" data-count="24">24</span>
           <span class="stat-label">Stunden Support</span>
         </div>
       </div>
@@ -664,8 +672,71 @@
   <script src="js/cookie-consent.js"></script>
   <script src="js/modern.js"></script>
   <script>
-    // Diese Funktionalität wird jetzt von modern.js übernommen
-    // Mobile menu wird automatisch initialisiert
+    // Statistiken Animation - vereinfacht und robuster
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // Counter Animation
+      function animateNumber(element, start, end, duration) {
+        const startTime = performance.now();
+        
+        function updateNumber(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          
+          // Easing function
+          const easeOutExpo = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+          
+          const current = Math.floor(start + (end - start) * easeOutExpo);
+          element.textContent = current;
+          
+          if (progress < 1) {
+            requestAnimationFrame(updateNumber);
+          } else {
+            element.textContent = end; // Ensure final value
+          }
+        }
+        
+        requestAnimationFrame(updateNumber);
+      }
+      
+      // Observer für Stats Section
+      const statsSection = document.querySelector('.stats-section');
+      
+      if (statsSection) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              console.log('Stats section visible - starting animation');
+              
+              // Animate stat items appearance
+              const statItems = document.querySelectorAll('.stat-item');
+              statItems.forEach((item, index) => {
+                setTimeout(() => {
+                  item.classList.add('visible');
+                }, index * 150);
+              });
+              
+              // Start counters after items are visible
+              setTimeout(() => {
+                const counters = document.querySelectorAll('.stat-number[data-count]');
+                counters.forEach(counter => {
+                  const target = parseInt(counter.getAttribute('data-count'));
+                  counter.textContent = '0';
+                  animateNumber(counter, 0, target, 2000);
+                });
+              }, 600);
+              
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { 
+          threshold: 0.5,
+          rootMargin: '0px 0px -100px 0px'
+        });
+        
+        observer.observe(statsSection);
+      }
+    });
   </script>
 </body>
 </html>
