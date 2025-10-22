@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://drcirpologe.github.io/Cirpan-Software-Developer/sitemap.xml
+
+# Block access to admin/config files
+Disallow: /js/
+Disallow: /style/
+Disallow: /.git/
+Disallow: /.gitignore
+Disallow: /README.md
+
+# Allow images for SEO
+Allow: /image/
+
+# Crawl delay (optional - reduces server load)
+Crawl-delay: 1
