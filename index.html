@@ -12,12 +12,17 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://drcirpologe.github.io/Cirpan-Software-Developer/">
   
+  <!-- Google-specific image meta -->
+  <meta name="thumbnail" content="https://drcirpologe.github.io/Cirpan-Software-Developer/image/ich.png">
+  <meta name="image" content="https://drcirpologe.github.io/Cirpan-Software-Developer/image/ich.png">
+  
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="CIRPAN Software Development – Moderne Apps, Websites & Softwarelösungen">
   <meta property="og:description" content="CIRPAN Software Development entwickelt moderne Apps, Websites und digitale Lösungen für Unternehmen. Qualität, Design und Funktion – alles aus einer Hand.">
   <meta property="og:url" content="https://drcirpologe.github.io/Cirpan-Software-Developer/">
   <meta property="og:image" content="https://drcirpologe.github.io/Cirpan-Software-Developer/image/ich.png">
+  <meta property="og:image:secure_url" content="https://drcirpologe.github.io/Cirpan-Software-Developer/image/ich.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/png">
@@ -40,7 +45,10 @@
     "name": "CIRPAN Software Development",
     "url": "https://drcirpologe.github.io/Cirpan-Software-Developer/",
     "logo": "https://drcirpologe.github.io/Cirpan-Software-Developer/image/webbild.png",
-    "image": "https://drcirpologe.github.io/Cirpan-Software-Developer/image/ich.png",
+    "image": [
+      "https://drcirpologe.github.io/Cirpan-Software-Developer/image/ich.png",
+      "https://drcirpologe.github.io/Cirpan-Software-Developer/image/webbild.png"
+    ],
     "description": "CIRPAN Software Development entwickelt moderne Apps, Websites und digitale Lösungen für Unternehmen. Qualität, Design und Funktion – alles aus einer Hand.",
     "founder": {
       "@type": "Person",
@@ -100,11 +108,32 @@
   }
   </script>
   
+  <!-- Image Object Schema for Google Images -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageObject",
+    "contentUrl": "https://drcirpologe.github.io/Cirpan-Software-Developer/image/ich.png",
+    "license": "https://drcirpologe.github.io/Cirpan-Software-Developer/",
+    "acquireLicensePage": "https://drcirpologe.github.io/Cirpan-Software-Developer/",
+    "creditText": "CIRPAN Software Development",
+    "creator": {
+      "@type": "Person",
+      "name": "Oğuzhan Cirpan"
+    },
+    "copyrightNotice": "CIRPAN Software Development"
+  }
+  </script>
+  
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Preload critical images for Google -->
+  <link rel="preload" as="image" href="image/ich.png" type="image/png">
+  <link rel="apple-touch-icon" href="image/ich.png">
   
   <!-- Styles -->
   <link rel="stylesheet" href="style/modern.css">
