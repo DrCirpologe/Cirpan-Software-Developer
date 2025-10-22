@@ -250,6 +250,82 @@
       line-height: 1.6;
     }
     
+    /* Website Benefits Cards with Flip Effect */
+    .website-benefit-card {
+      position: relative;
+      height: 368px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    
+    .benefit-front,
+    .benefit-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      transition: transform 0.6s ease-in-out;
+      padding: var(--space-2xl);
+      background: var(--bg-secondary);
+      border: 1px solid var(--gray-800);
+      border-radius: var(--radius-xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .benefit-front {
+      transform: rotateY(0deg);
+    }
+    
+    .benefit-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+      padding: var(--space-xl);
+    }
+    
+    .website-benefit-card:hover .benefit-front,
+    .website-benefit-card.active .benefit-front {
+      transform: rotateY(-180deg);
+    }
+    
+    .website-benefit-card:hover .benefit-back,
+    .website-benefit-card.active .benefit-back {
+      transform: rotateY(0deg);
+    }
+    
+    .benefit-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg);
+      color: var(--white);
+    }
+    
+    .benefit-description {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    /* Mobile touch support */
+    @media (max-width: 768px) {
+      .website-benefit-card {
+        height: auto;
+        min-height: 315px;
+      }
+      
+      .website-benefit-card:active .benefit-front {
+        transform: rotateY(-180deg);
+      }
+      
+      .website-benefit-card:active .benefit-back {
+        transform: rotateY(0deg);
+      }
+    }
+    
     .stats-section {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       color: var(--white);
@@ -504,6 +580,56 @@
     </div>
   </section>
   
+  <!-- Why Modern Website Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Warum eine moderne Website für Ihr Unternehmen unverzichtbar ist</h2>
+      </div>
+      
+      <div class="services-grid">
+        <div class="website-benefit-card animate-fade-in-up" style="--stagger: 1">
+          <div class="benefit-front">
+            <div class="service-icon">🏆</div>
+            <h3 class="service-title">Vertrauen aufbauen</h3>
+          </div>
+          <div class="benefit-back">
+            <h3 class="benefit-title">Ihre digitale Visitenkarte</h3>
+            <p class="benefit-description">
+              Heute ist die Website oft der erste Eindruck, den potenzielle Kunden von Ihrem Unternehmen bekommen. Ein professionell gestalteter und aktueller Webauftritt geht weit über eine einfache Visitenkarte hinaus – er vermittelt Glaubwürdigkeit und Kompetenz. Er zeigt, dass Ihr Unternehmen seriös, relevant und auf dem neuesten Stand ist. Fehlt eine moderne Website, besteht die Gefahr, dass Ihr Unternehmen als veraltet oder wenig vertrauenswürdig wahrgenommen wird.
+            </p>
+          </div>
+        </div>
+        
+        <div class="website-benefit-card animate-fade-in-up" style="--stagger: 2">
+          <div class="benefit-front">
+            <div class="service-icon">⏰</div>
+            <h3 class="service-title">Immer erreichbar</h3>
+          </div>
+          <div class="benefit-back">
+            <h3 class="benefit-title">Ihr Unternehmen arbeitet rund um die Uhr</h3>
+            <p class="benefit-description">
+              Während Ihr Büro oder Geschäft Öffnungszeiten hat, ist Ihre Website ununterbrochen für Kunden verfügbar – 24 Stunden am Tag, 7 Tage die Woche. Sie liefert wichtige Informationen, stellt Ihre Leistungen vor und nimmt Anfragen entgegen, selbst wenn Sie schlafen. Mit einer modernen Website haben Sie einen digitalen Mitarbeiter, der niemals Pause macht und kontinuierlich neue Interessenten gewinnt.
+            </p>
+          </div>
+        </div>
+        
+        <div class="website-benefit-card animate-fade-in-up" style="--stagger: 3">
+          <div class="benefit-front">
+            <div class="service-icon">📈</div>
+            <h3 class="service-title">Wettbewerbsfähig bleiben</h3>
+          </div>
+          <div class="benefit-back">
+            <h3 class="benefit-title">Digitale Kundengewinnung sichern</h3>
+            <p class="benefit-description">
+              Die Art, wie Kunden heute nach Dienstleistungen suchen, hat sich stark verändert. Der erste Schritt ist fast immer eine Online-Suche. Ohne eine ansprechende und aktuelle Website werden Sie von Ihrer Zielgruppe kaum wahrgenommen. So überlassen Sie wertvolle Chancen der Konkurrenz. Eine professionell gestaltete Website ist daher nicht nur ein „nice-to-have", sondern essenziell, um im digitalen Markt sichtbar und erfolgreich zu sein.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
   <!-- Services Section -->
   <section id="services" class="section">
     <div class="container">
@@ -736,6 +862,36 @@
         
         observer.observe(statsSection);
       }
+    });
+    
+    // Touch support for benefit cards on mobile
+    document.addEventListener('DOMContentLoaded', function() {
+      const benefitCards = document.querySelectorAll('.website-benefit-card');
+      
+      benefitCards.forEach(card => {
+        let isFlipped = false;
+        
+        card.addEventListener('click', function(e) {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            isFlipped = !isFlipped;
+            
+            if (isFlipped) {
+              card.classList.add('active');
+            } else {
+              card.classList.remove('active');
+            }
+          }
+        });
+        
+        // Reset on window resize
+        window.addEventListener('resize', function() {
+          if (window.innerWidth > 768) {
+            card.classList.remove('active');
+            isFlipped = false;
+          }
+        });
+      });
     });
   </script>
 </body>
