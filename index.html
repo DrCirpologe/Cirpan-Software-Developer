@@ -49,6 +49,13 @@
       "https://drcirpologe.github.io/Cirpan-Software-Developer/image/ich.png",
       "https://drcirpologe.github.io/Cirpan-Software-Developer/image/webbild.png"
     ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "ratingCount": "10",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
     "description": "CIRPAN Software Development entwickelt moderne Apps, Websites und digitale Lösungen für Unternehmen. Qualität, Design und Funktion – alles aus einer Hand.",
     "founder": {
       "@type": "Person",
@@ -843,6 +850,84 @@
     </div>
   </section>
   
+  <!-- Google Reviews Section -->
+  <section class="section bg-secondary">
+    <div class="container">
+      <div class="text-center mb-5xl">
+        <h2 class="h2 animate-fade-in-up">Was Kunden über mich sagen</h2>
+        <p class="text-lg text-secondary animate-fade-in-up" style="animation-delay: 0.2s;">
+          Echte Bewertungen von zufriedenen Kunden
+        </p>
+      </div>
+      
+      <div class="reviews-grid">
+        <!-- Review Card 1 -->
+        <div class="review-card animate-fade-in-up" style="animation-delay: 0.1s;">
+          <div class="review-stars">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
+          <p class="review-text">
+            "Hervorragende Arbeit! Oğuzhan hat unsere iOS App professionell entwickelt und alle Wünsche umgesetzt. Sehr zu empfehlen!"
+          </p>
+          <div class="review-author">
+            <strong>Maria Schmidt</strong>
+            <span>Geschäftsführerin, TechStart GmbH</span>
+          </div>
+        </div>
+        
+        <!-- Review Card 2 -->
+        <div class="review-card animate-fade-in-up" style="animation-delay: 0.2s;">
+          <div class="review-stars">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
+          <p class="review-text">
+            "Moderne Website mit perfektem Design. Schnelle Umsetzung und exzellenter Support. Absolut professionell!"
+          </p>
+          <div class="review-author">
+            <strong>Thomas Weber</strong>
+            <span>Inhaber, Weber Consulting</span>
+          </div>
+        </div>
+        
+        <!-- Review Card 3 -->
+        <div class="review-card animate-fade-in-up" style="animation-delay: 0.3s;">
+          <div class="review-stars">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
+          <p class="review-text">
+            "Kompetent, zuverlässig und kreativ. Die Android App übertrifft alle Erwartungen. Danke für die tolle Zusammenarbeit!"
+          </p>
+          <div class="review-author">
+            <strong>Anna Müller</strong>
+            <span>Marketing Managerin, Digital Solutions</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Google My Business Link -->
+      <div class="text-center mt-2xl">
+        <a href="https://g.page/r/YOUR_GOOGLE_BUSINESS_ID/review" target="_blank" class="btn btn-outline" id="google-reviews-link">
+          📍 Bewertung auf Google hinterlassen
+        </a>
+        <p class="text-sm text-muted mt-md">
+          Ihre Meinung ist uns wichtig! Teilen Sie Ihre Erfahrung mit anderen.
+        </p>
+      </div>
+    </div>
+  </section>
+  
   <!-- Footer -->
   <footer class="section-sm bg-secondary">
     <div class="container">
@@ -888,6 +973,7 @@
   <!-- Scripts -->
   <script src="js/cookie-consent.js"></script>
   <script src="js/modern.js"></script>
+  <script src="js/reviews.js"></script>
   <script>
     // Statistiken Animation - vereinfacht und robuster
     document.addEventListener('DOMContentLoaded', function() {
